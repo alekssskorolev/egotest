@@ -13,15 +13,12 @@
     <style>
         /* --- НАСТРОЙКИ ДИЗАЙНА (CSS) --- */
         :root {
-            /* [ЦВЕТА] */
             --bg-color: #F5F7FA;        
             --text-color: #1A202C;      
             --accent-color: #0066FF;    
             --orange-color: #FF8C00;    
             --secondary-accent: #718096;
             --white: #FFFFFF;           
-            
-            /* [ТЕНИ И СКРУГЛЕНИЯ] */
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
             --border-radius: 20px;      
         }
@@ -29,22 +26,13 @@
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
-        /* [ШИРИНА САЙТА] */
-        .container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 40px 20px; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
 
         h1 { font-weight: 800; font-size: 28px; text-align: center; text-transform: uppercase; margin-bottom: 15px; line-height: 1.3; }
         .subtitle { text-align: center; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
         .description { text-align: center; font-size: 14px; color: var(--secondary-accent); margin-bottom: 40px; }
         
-        /* Карточки на главной */
+        /* Карточки */
         .card { background: var(--white); border-radius: var(--border-radius); padding: 25px 30px; box-shadow: var(--shadow); margin-bottom: 25px; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; border: 2px solid transparent; }
         .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
         .card-full { border: 3px solid var(--accent-color); } 
@@ -58,30 +46,15 @@
         
         .card-text { font-size: 15px; margin-bottom: 20px; color: #4A5568; line-height: 1.6; }
         
-        /* ФУТЕР КАРТОЧКИ (Исправлено выравнивание) */
-        .card-footer { 
-            display: flex; 
-            justify-content: space-between; /* Разносит элементы по краям (лево/право) */
-            align-items: center; 
-            font-size: 14px; 
-            font-weight: 700; 
-            margin-top: auto; 
-            width: 100%;
-        }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; margin-top: auto; width: 100%; }
         
         .tag { background-color: var(--accent-color); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
         
-        .accuracy-badge { 
-            font-weight: 700; 
-            font-size: 14px; 
-            display: flex; 
-            align-items: center; 
-        }
-        
+        .accuracy-badge { font-weight: 700; font-size: 14px; display: flex; align-items: center; }
         .card-full .accuracy-badge { color: var(--accent-color); }
         .card-express .accuracy-badge { color: var(--orange-color); }
 
-        /* Интерфейс теста */
+        /* Тест */
         .quiz-wrapper { width: 100%; margin: 0 auto; }
         .progress-container { margin-bottom: 30px; width: 100%; margin-left: auto; margin-right: auto; }
         .progress-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--secondary-accent); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
@@ -100,7 +73,7 @@
         .btn-no { background-color: var(--white); color: #A0AEC0; border: 1px solid transparent; }
         .btn-no:active { color: var(--text-color); }
 
-        /* Страница результатов */
+        /* Результаты */
         .chart-section { background: var(--white); border-radius: var(--border-radius); padding: 30px; box-shadow: var(--shadow); margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
         .chart-container { position: relative; width: 300px; height: 300px; }
         .chart-legend { margin-left: 30px; flex: 1; min-width: 250px; }
@@ -123,6 +96,11 @@
         .long-text-toggle { text-align: center; margin: 20px 0; cursor: pointer; color: var(--accent-color); font-weight: 600; text-decoration: underline; }
         .long-text-content { display: none; background: white; padding: 30px; border-radius: var(--border-radius); margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: var(--text-color); box-shadow: var(--shadow); }
         .long-text-content.visible { display: block; }
+        /* Контент длинного текста - форматирование */
+        #long-text-container h3 { text-align: center; color: var(--accent-color); margin-bottom: 20px; }
+        #long-text-container p { margin-bottom: 15px; }
+        #long-text-container ul { margin-bottom: 15px; padding-left: 20px; }
+        #long-text-container li { margin-bottom: 5px; }
 
         .cta-section { text-align: center; margin-top: 40px; margin-bottom: 60px; }
         .cta-text { font-size: 18px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
@@ -136,7 +114,6 @@
         #warning-overlay.active { opacity: 1; visibility: visible; }
         .warning-text { font-size: 24px; font-weight: 600; text-transform: uppercase; line-height: 1.5; max-width: 600px; }
 
-        /* МОБИЛЬНАЯ АДАПТАЦИЯ */
         @media (max-width: 600px) {
             h1 { font-size: 24px; }
             .question-text { font-size: 18px; }
@@ -147,23 +124,8 @@
             .result-header-card { padding: 30px 20px; }
             .result-body-card { padding: 25px 20px; }
             .card-title { font-size: 20px; }
-            
-            /* Исправлено: Элементы в футере теперь в одну строку, если влезают */
-            .card-footer {
-                justify-content: space-between; /* Сохраняем разнесение влево/вправо */
-                flex-wrap: nowrap; /* Пытаемся держать в одной строке */
-                align-items: center;
-            }
-            
-            /* Если экран совсем узкий, можно уменьшить шрифт */
-            .accuracy-badge .badge-info, 
-            .tag {
-                font-size: 11px; 
-                padding: 6px 10px;
-                white-space: nowrap; /* Не переносить текст внутри плашки */
-            }
-            
-            /* Убираем стили, которые сдвигали всё вправо */
+            .card-footer { justify-content: space-between; flex-wrap: nowrap; align-items: center; }
+            .accuracy-badge .badge-info, .tag { font-size: 11px; padding: 6px 10px; white-space: nowrap; }
             .accuracy-badge { width: auto; margin-bottom: 0; justify-content: flex-start; }
             .tag { margin-left: 0; }
         }
@@ -173,7 +135,6 @@
 
 <div id="app" class="container">
     
-    <!-- HOME PAGE -->
     <div id="home-page">
         <h1>Какая программа управляет твоей жизнью?</h1>
         <div class="subtitle">Тест на скрытую «Эго-конструкцию». Узнай, что водит тебя по кругу, создает фоновую тревогу и забирает до 80% энергии на внутреннюю борьбу.</div>
@@ -181,7 +142,6 @@
 
         <h3 style="text-align:center; font-size: 14px; font-weight: 700; margin: 30px 0 20px; text-transform: uppercase;">Выбери глубину сканирования</h3>
 
-        <!-- Full Test Card -->
         <div class="card card-full" onclick="startTest('full')">
             <div class="card-header">
                 <span class="card-title">Полный тест</span>
@@ -190,14 +150,12 @@
             <div class="card-text">
                 Глубокий анализ ЭГО-программ. Ты увидишь слепые зоны, которые блокируют твою энергию, здоровый сон и вкус жизни.
             </div>
-            <!-- Футер: Точность (слева) - Выбор (справа) -->
             <div class="card-footer">
                 <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Точность ~95%</span></span>
                 <span class="tag">Выбор 84% пользователей</span>
             </div>
         </div>
 
-        <!-- Express Test Card -->
         <div class="card card-express" onclick="startTest('express')">
             <div class="card-header">
                 <span class="card-title">Экспресс-тест</span>
@@ -206,14 +164,12 @@
             <div class="card-text">
                 Быстрая диагностика текущего состояния. Узнай, какая программа активна прямо сейчас.
             </div>
-            <!-- Футер: Точность (слева) -->
             <div class="card-footer">
                 <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Точность ~60%</span></span>
             </div>
         </div>
     </div>
 
-    <!-- QUIZ PAGE -->
     <div id="quiz-page" class="hidden">
         <div class="progress-container">
             <div class="progress-header">
@@ -227,9 +183,7 @@
 
         <div class="quiz-wrapper">
             <div class="question-card">
-                <div id="question-text" class="question-text">
-                    Загрузка вопроса...
-                </div>
+                <div id="question-text" class="question-text">Загрузка вопроса...</div>
             </div>
 
             <div class="answers-container">
@@ -240,7 +194,6 @@
         </div>
     </div>
 
-    <!-- RESULTS PAGE -->
     <div id="results-page" class="hidden">
         <h1>Результаты тестирования</h1>
         
@@ -284,15 +237,12 @@
 </div>
 
 <div id="warning-overlay">
-    <div class="warning-text">
-        ОТВЕЧАЙ ЧЕСТНО.<br>ЭТО РАДИ ТЕБЯ.<br>НИКТО НЕ УВИДИТ.
-    </div>
+    <div class="warning-text">ОТВЕЧАЙ ЧЕСТНО.<br>ЭТО РАДИ ТЕБЯ.<br>НИКТО НЕ УВИДИТ.</div>
 </div>
 
+<script src="descriptions.js" defer></script>
+
 <script>
-    // --- DATABASE ---
-    
-    // Ego Types
     const EGO_TYPES = {
         PERFECTIONIST: { id: 1, name: "Перфекционист", color: "#0066FF" },
         WORKAHOLIC: { id: 2, name: "Трудоголик", color: "#0052CC" },
@@ -313,166 +263,158 @@
         CYNIC: { id: 17, name: "Циник", color: "#003D99" }
     };
 
-    // Descriptions (Full from PDF)
-    const DESCRIPTIONS = {
-        1: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты либо делаешь идеально, либо не делаешь никак. Любая ошибка для тебя — катастрофа. Ты годами шлифуешь детали, пока другие уже запускают проекты и зарабатывают. Твой внутренний критик никогда не затыкается.</div><div class="detail-block"><span class="detail-label">Травма:</span>Травма «Отвержения». Тебя стыдили за "четверки" и ошибки. Сравнивали с теми, кто учился лучше.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я ценен только когда делаю идеально».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Это еще сыро», «Надо докрутить», «Либо хорошо, либо никак», «Я переделаю».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Халтура, небрежность, опечатки, «тяп-ляп и готово».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На бесконечное переделывание и страх начать.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Выгорание, боли в спине и шее, синдром отложенной жизни, куча незавершенных проектов, паралич действий, низкая самооценка при высоких талантах, неврозы.</div>`,
-        2: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты чувствуешь вину, когда просто сидишь на диване. Тебе кажется, что день прошел зря, если ты мало сделал. Твое состояние зависит от того, сколько дел ты вычеркнул из списка.</div><div class="detail-block"><span class="detail-label">Травма:</span>Тебя любили/хвалили только когда ты был «полезным» (мыл посуду, копал огород, помогал по дому).</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я ценен только когда приношу пользу».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Я занят», «Время — деньги», «Потом отдохну», «Просто я люблю то, чем занимаюсь», «Не сейчас».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Медлительность, расхлябанность, лентяйство. Люди, которые умеют наслаждаться жизнью «просто так».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На суету и бесконечные мысли о работе.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Выгорание, тревога, бессоница, нет времени на семью, жизнь проходит мимо, проблемы с сердцем, зависимости, низкое либидо.</div>`,
-        3: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в иллюзии «завтрашнего дня». Ты откладываешь жизнь на потом из страха, что у тебя не получится идеально или тебя осудят. Ты знаешь, ЧТО делать, но тебе страшно начать.</div><div class="detail-block"><span class="detail-label">Травма:</span>Давление высоких ожиданий («Ты должен быть гением») или страх наказания за инициативу.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Пока я не начал — я не проиграл. Действие = Опасность».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Завтра начну», «У меня еще есть время», «С понедельника», «Я под давлением работаю лучше», «Сначала надо прибраться/поесть».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Дисциплина, продуктивность, вопросы «ну как там проект?».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На чувство вины и тревогу перед надвигающимся сроком.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Упущенные годы, бедность, самобичевание, хронический стресс, срывы сроков.</div>`,
-        4: `<div class="detail-block"><span class="detail-label">Суть:</span>Твоя самооценка скачет от «Я Бог» до «Я Ничтожество» по пять раз на дню. Ты зависим(а) от восхищения, лайков и признания. Тебе физически плохо, если тебя не заметили или проигнорировали. Внутри ты чувствуешь пустоту, которую пытаешься заполнить внешним успехом.</div><div class="detail-block"><span class="detail-label">Травма:</span>Тебя любили/замечали только когда ты был(а) «Лучшим», «Красивым» или «Победителем».</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Меня любят, только если я особенный».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«А вот у меня...», «Они просто мне завидуют», «Я достоин большего», «Они просто не моего уровня», «Смотри, как я могу».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Посредственность («серые мыши»), чужой успех (вызывает жгучую зависть) и любая, даже малейшая критика в твой адрес.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На поддержание маски успешного/особенного, бесконечное сравнение себя с другими и подавление стыда за свою «неидеальность».</div><div class="detail-block"><span class="detail-label">Последствия:</span>Тотальное одиночество (никто не знает тебя настоящего), невозможность построить близкие отношения, вечная неудовлетворенность, сколько бы ты ни достиг, дыра в груди.</div>`,
-        5: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты чувствуешь, что жизнь несправедлива и обстоятельства всегда сильнее тебя. Ты мастерски находишь оправдания, почему «нет». Ты ждешь, что кто-то придет и спасет тебя.</div><div class="detail-block"><span class="detail-label">Травма:</span>Гиперопека («Не лезь, упадешь») или тотальное подавление воли. Выученная беспомощность. Тебе били по рукам за инициативу или гиперопекали.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я маленький и слабый, а мир большой и страшный».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Везет же людям», «У меня нет возможности», «Это не так просто», «Ты меня не понимаешь», «Почему опять я?», «Если бы у меня были деньги/связи...», «Я не виноват».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Успешные люди, советы в стиле «просто возьми и сделай», оптимизм.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На поиск оправданий, жалобы и пережевывание обид.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Хроническая бедность, психосоматические болезни (чтобы пожалели), стагнация, токсичное окружение.</div>`,
-        6: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты не ищешь легких путей. Если решение простое — оно для тебя неверное. Ты генерируешь проблемы, чтобы их героически решать интеллектуальным путем. Ты всё понимаешь, можешь объяснить любую проблему, но стоишь на одном месте.</div><div class="detail-block"><span class="detail-label">Травма:</span>Запрет на эмоции («Не реви», «Будь умным»). В семье ценили только ум и презирали простоту/чувства.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Простота — для дураков. Я должен всё проанализировать».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Всё не так однозначно», «Надо посмотреть контекст», «Да, но...», «Это сложный вопрос», «Надо проанализировать», «Логично/Нелогично», «В теории это так...».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Люди, которые быстро принимают решения, примитивность, простота, эмоциональность.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На ментальную жвачку и создание лабиринтов (схем, таблиц), из которых нет выхода.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Отсутствие вкуса жизни, проблемы с сексом/деньгами, апатия.</div>`,
-        7: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в режиме «Сжечь мосты». Тебе нужны драмы, революции и обнуления. Ты не умеешь строить вдолгую. Как только становится скучно или сложно — ты разрушаешь всё до основания и начинаешь заново.</div><div class="detail-block"><span class="detail-label">Травма:</span>Жесткая критика в детстве. Любовь давали только за «правильное» поведение.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Полумеры для слабаков. Всё или ничего. Стабильность = болото».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Начинаю новую жизнь», «Всё бросил и уехал», «Гори оно огнем», «Только хардкор».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Умеренность, осторожность, рутина, постоянство.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На разрушение созданного и постоянные старты с нуля.</div><div class="detail-block"><span class="detail-label">Последствия:</span>К 40 годам ни дома, ни семьи, ни капитала, только куча ярких историй и пепелище.</div>`,
-        8: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты — профессиональный хамелеон. Ты предаешь себя по 100 раз на дню, лишь бы не обидеть других. Тебе сложно сказать «Нет». Ты соглашаешься на то, что не хочешь делать, лишь бы никого не обидеть. Ты улыбаешься, даже когда тебе хамят. Снаружи ты святой человек, а внутри копишь тонны пассивной агрессии и обиды.</div><div class="detail-block"><span class="detail-label">Травма:</span>В детстве твои потребности/эмоции раздражали взрослых. Любовь нужно было заслуживать послушанием: «Будь хорошим мальчиком/девочкой».</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Чтобы меня любили, я должен быть тихим, послушным и улыбаться. Я ценен, только пока я удобен».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Мне не сложно», «Как скажешь», «Извини», «Я потерплю», «Главное, чтобы тебе было хорошо», «Ничего страшного».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>«Эгоисты» (те, кто выбирает себя), наглость, прямые конфликты и люди, которые легко говорят «нет».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На бесконечное сканирование чужого настроения («А он не обиделся?») и подавление собственной злости.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Тобой пользуются все (коллеги, родня), ты не знаешь, чего хочешь сам (потеря вкуса к жизни), психосоматика (ком в горле, аллергии), взрывы ярости на пустом месте или тихая депрессия.</div>`,
-        9: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты парализован анализом. Ищешь подвох даже там, где его нет. Твой интеллект работает против тебя: ты так боишься оказаться дураком, что упускаешь все возможности. Обесцениваешь чужой успех или искренность, считая это обманом или глупостью.</div><div class="detail-block"><span class="detail-label">Травма:</span>Травма «Обмана». Тебя предали или жестко развели, когда ты доверился. Теперь ты дуешь на воду.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Мир хочет меня поиметь. Доверять нельзя никому».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Где гарантии?», «Это развод», «А какие доказательства?», «Слишком хорошо, чтобы быть правдой», «Не верю».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Наивность, восторженность, риск, «успешный успех».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На бесконечное проверки, сомнения и строительство ментальных стен.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Упущенная выгода, одиночество, застой в делах (горе от ума), фоновая тревога, озлобленность.</div>`,
-        10: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты упиваешься своей уникальностью и страданиями. Ты уверен, что мир слишком груб и примитивен, чтобы понять твою тонкую натуру. Ты ждешь признания, но ничего не делаешь, чтобы продать свой талант.</div><div class="detail-block"><span class="detail-label">Травма:</span>Тебя не принимали таким, какой ты есть. Твою уникальность либо не замечали, либо хвалили только за талант, игнорируя личность.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я слишком особенный для обычной работы».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Я так чувствую», «Это не для всех», «Попса», «Я не продаюсь», «Они не поймут», «Я выше этого».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Коммерческий успех бездарностей, популярность, попса, посредственность.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На обиду на мир и лелеяние своей "особенности".</div><div class="detail-block"><span class="detail-label">Последствия:</span>Нищета, одиночество, депрессия, талант гниет в столе.</div>`,
-        11: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в фоновой тревоге: «Если я расслаблюсь, всё рухнет». Ты не умеешь доверять и делегировать, тебе кажется, что другие всё испортят.</div><div class="detail-block"><span class="detail-label">Травма:</span>Непредсказуемая обстановка в детстве (скандалы или хаос). Пришлось взять контроль на себя, чтобы выжить.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Доверять опасно. Хочешь сделать хорошо — сделай сам».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Ты точно сделал?», «Я сам», «Всё под контролем», «Напиши, как доедешь».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Беспечность, опоздания, спонтанность, ошибки.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На прокручивание в голове катастроф и тотальную слежку за всем/всеми вокруг.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Нервные срывы, хроническая усталость, бессоница, гастрит/язвы, ссоры с близкими из-за гиперопеки, одиночество (при успехе).</div>`,
-        12: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты всегда «ПРОТИВ». Твоя жизнь — это борьба с системой, начальниками, правилами. Ты разрушаешь даже то, что полезно для тебя, лишь бы не подчиняться. Твоя свобода — это свобода подростка, сбежавшего из дома.</div><div class="detail-block"><span class="detail-label">Травма:</span>Жесткий контроль, подавление воли, авторитарные родители.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Подчиниться = Умереть. Я докажу, что я свободен».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Не указывай мне», «Я сделаю по-своему», «К черту правила», «Я не такой как все», «Пошли вы», «Я сам решу».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Послушание, режим, традиции, авторитеты, стабильность, «офисный планктон», правильность.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На саботаж, сопротивление и разрушение стабильности. На доказывание своей независимости.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Нестабильный доход, проблемы с законом/начальством, отсутствие фундамента, конфликты.</div>`,
-        13: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь чужими проблемами, чтобы не решать свои. Ты причиняешь добро и догоняешь с советами, когда не просят. Твоя самооценка держится на чувстве «Я нужен, без меня они пропадут».</div><div class="detail-block"><span class="detail-label">Травма:</span>В детстве ты был эмоциональным родителем для своих мамы/папы. Ты спасал их настроение/брак.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Меня полюбят, только если я буду их спасать. Я не важен, важны другие».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Бедняжка», «Я же говорил(а)», «Давай я помогу», «Они без меня не справятся», «Я просто хочу как лучше».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Эгоизм, равнодушие, умение жить для себя, неблагодарность, самостоятельность (когда твоя помощь не нужна).</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На обслуживание чужих жизней и обиду, что тебе не ответили тем же.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Истощение, тебя используют, ты проживаешь не свою жизнь, созависимые отношения.</div>`,
-        14: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты сбежал из реальности в духовность, эзотерику или фантазии. Тебе сложно платить по счетам, соблюдать дедлайны и быть в теле. Ты отрицаешь материальное, потому что не умеешь с ним справляться.</div><div class="detail-block"><span class="detail-label">Травма:</span>В детстве было так плохо/скучно, что ты ушел в свой мир. Побег в фантазии стал спасением.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Материальный мир — это тюрьма/низкие вибрации. Я выше этого».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Это в потоке», «Вселенная решит», «Деньги не главное», «Я вне системы», «Это низкие вибрации».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Заземленность, разговоры о деньгах, планы, графики.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На поддержание иллюзий и избегание ответственности.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Финансовые долги, бытовая неустроенность, оторванность от жизни, инфантильность.</div>`,
-        15: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты смотришь на мир свысока через призму «Правильно/Неправильно». Много осуждаешь других. Ты любишь поспорить и доказать свою точку зрения. Тебе важно, чтобы справедливость восторжествовала.</div><div class="detail-block"><span class="detail-label">Травма:</span>Жесткая критика в детстве. Холодное, требовательное воспитание, где шаг влево расстрел.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Есть только два мнения: мое и неправильное».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Ну что за идиоты», «Куда катится мир?», «Как так можно?», «А вот в наше время», «Стыдно должно быть».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Свобода, другое мнение, отсутствие стыда, «аморальность».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На осуждение (даже мысленное), споры, доказательство своей правоты.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Ты остаешься один (с тобой душно), проблемы с желчным/печенью, вечное раздражение.</div>`,
-        16: `<div class="detail-block"><span class="detail-label">Суть:</span>Твоя стратегия — «не отсвечивать». Ты боишься заявить о себе, назвать цену, высказать мнение. Тебе кажется, что если тебя заметят — тебя накажут. Ты удобный, тихий и... никакой.</div><div class="detail-block"><span class="detail-label">Травма:</span>Травма «Игнорирования» или «Наказания за проявленность». «Закрой рот», «Не мешай», «Я последняя буква в алфавите». Публичное унижение или игнорирование в детстве.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я не важен. Мое мнение никого не волнует. Безопасно быть в тени».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Мне всё равно», «Как скажешь», «Извините», «Я не знаю», «Тише едешь — дальше будешь».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Громкие, наглые люди, выскочки, конфликтные ситуации, самопиар.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На сжатие себя, чтобы занимать меньше места в пространстве.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Зарытый талант, бедность, болезни горла, ощущение, что жизнь проходит мимо, зависть.</div>`,
-        17: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты надел броню безразличия и сарказма, чтобы тебе больше не сделали больно. Ты обесцениваешь всё: любовь, успех, искренность. Внутри ты раненый романтик, но снаружи — холодный сноб.</div><div class="detail-block"><span class="detail-label">Травма:</span>Травма «Разбитого сердца». Когда-то ты открыл душу, а туда плюнули.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Любви нет, есть только выгода. Все люди — эгоистичные твари».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Не смеши меня», «Все лгут», «Сколько это стоит?», «Наивные идиоты», «Благими намерениями вымощена дорога в ад».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Искренность, «розовые сопли», «щенячья радость», вера в лучшее.</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На выработку яда, обесценивание всего хорошего и поиск доказательств того, что мир — дерьмо.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Эмоциональная мертвечина, одиночество (люди устают от твоего негатива), психосоматика (желчь, печень), невозможность радоваться.</div>`
+    const SHORT_DESCRIPTIONS = {
+        1: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты либо делаешь идеально, либо не делаешь никак.</div>`,
+        2: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты чувствуешь вину, когда просто сидишь на диване.</div>`,
+        3: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в иллюзии «завтрашнего дня».</div>`,
+        4: `<div class="detail-block"><span class="detail-label">Суть:</span>Твоя самооценка скачет от «Я Бог» до «Я Ничтожество».</div>`,
+        5: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты чувствуешь, что жизнь несправедлива.</div>`,
+        6: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты генерируешь проблемы, чтобы их героически решать.</div>`,
+        7: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в режиме «Сжечь мосты».</div>`,
+        8: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты профессиональный хамелеон. Предаешь себя, лишь бы не обидеть других.</div>`,
+        9: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты парализован анализом. Ищешь подвох даже там, где его нет.</div>`,
+        10: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты упиваешься своей уникальностью и страданиями.</div>`,
+        11: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь в фоновой тревоге: «Если я расслаблюсь, всё рухнет».</div>`,
+        12: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты всегда «ПРОТИВ». Твоя жизнь — это борьба с системой.</div>`,
+        13: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты живешь чужими проблемами, чтобы не решать свои.</div>`,
+        14: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты сбежал из реальности в духовность или фантазии.</div>`,
+        15: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты смотришь на мир свысока через призму «Правильно/Неправильно».</div>`,
+        16: `<div class="detail-block"><span class="detail-label">Суть:</span>Твоя стратегия — «не отсвечивать».</div>`,
+        17: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты надел броню безразличия и сарказма, чтобы тебе не сделали больно.</div>`
     };
 
-    // Questions Data (17 types x 6 questions)
     const RAW_QUESTIONS = [
         { type: 1, text: "Я не могу выложить пост или отправить сообщение, пока не проверю все 10 раз." },
         { type: 1, text: "Мне проще сделать всё самому, чем объяснять кому-то, а потом переделывать за ними их косяки." },
         { type: 1, text: "У меня лежат проекты, готовые на 90%, но я их не выпускаю месяцами, потому что хочу «еще немного докрутить»." },
-        { type: 1, text: "Меня реально бесит, когда я вижу ошибки или кривое форматирование в чужих текстах — сразу кажется, что человек непрофессионал." },
-        { type: 1, text: "Если делать уборку в квартире, то капитально. Если запускать проект, то делать нужно сразу хорошо, а не на отшибись." },
-        { type: 1, text: "Меня раздражает, когда люди делают работу «на отвали» и при этом требуют за неё нормальные деньги." },
+        { type: 1, text: "Меня реально бесит, когда я вижу ошибки или кривое форматирование в чужих текстах." },
+        { type: 1, text: "Если делать уборку в квартире, то капитально." },
+        { type: 1, text: "Меня раздражает, когда люди делают работу «на отвали»." },
 
-        { type: 2, text: "Если в понедельник вместо работы я решу посмотреть сериал, то меня начнет грызть чувство вины, что я теряю время зря." },
-        { type: 2, text: "Для меня самый большой кайф это увидеть в конце дня список задач, где всё вычеркнуто. Если я за день не сделал ничего полезного — день прожит зря." },
-        { type: 2, text: "Я постоянно думаю о задачах/проектах даже когда я в отпуске/играю с детьми или принимаю душ." },
-        { type: 2, text: "Меня бесят ленивые люди. Они тратят свою жизнь на сериалы и другую бесполезную фигню." },
+        { type: 2, text: "Если в понедельник вместо работы я решу посмотреть сериал, то меня начнет грызть чувство вины." },
+        { type: 2, text: "Для меня самый большой кайф это увидеть в конце дня список задач, где всё вычеркнуто." },
+        { type: 2, text: "Я постоянно думаю о задачах/проектах даже когда я в отпуске." },
+        { type: 2, text: "Меня бесят ленивые люди." },
         { type: 2, text: "Когда я смотрю фильм, я могу параллельно отвечать в чатах или проверять почту." },
-        { type: 2, text: "Меня до бешенства доводит медленный интернет или зависшее приложение. Хочется разбить телефон об стену." },
+        { type: 2, text: "Меня до бешенства доводит медленный интернет или зависшее приложение." },
 
-        { type: 3, text: "Я скупаю курсы или сохраняю видео «на потом», но так ничего с этим и не делаю и не довожу до конца." },
-        { type: 3, text: "Я постоянно обещаю себе: «Всё, с понедельника точно начну» (диету, проект, английский), но ничего не меняется." },
+        { type: 3, text: "Я скупаю курсы или сохраняю видео «на потом», но так ничего с этим и не делаю." },
+        { type: 3, text: "Я постоянно обещаю себе: «Всё, с понедельника точно начну», но ничего не меняется." },
         { type: 3, text: "Вечером я часто ругаю себя за то, что опять профукал день в телефоне." },
-        { type: 3, text: "Я жду «особого настроения» или вдохновения, чтобы начать делать, а оно всё не приходит." },
-        { type: 3, text: "Я люблю покупать красивые блокноты и расписывать планы, чтобы начать «новую жизнь», но обычно этим и заканчивается." },
-        { type: 3, text: "У меня куча идей, которые лежат мертвым грузом. Я постоянно о них думаю, но ничего не делаю." },
+        { type: 3, text: "Я жду «особого настроения» или вдохновения, чтобы начать делать." },
+        { type: 3, text: "Я люблю покупать красивые блокноты и расписывать планы, но обычно этим и заканчивается." },
+        { type: 3, text: "У меня куча идей, которые лежат мертвым грузом." },
 
-        { type: 4, text: "Меня реально бесит, когда я вижу, как откровенные тупицы и бездарности поднимают миллионы, а я сижу в тени." },
-        { type: 4, text: "Если мое фото/пост в соцсетях набрало мало лайков, я хочу его удалить или скрыть." },
-        { type: 4, text: "На самом деле в моей жизни все не так «красиво», как я рассказываю друзьям или в соц. сетях." },
-        { type: 4, text: "Когда у кого-то из «успешных» людей случается провал или развод, я чувствую тайное облегчение: «Ну вот, они тоже не святые»." },
-        { type: 4, text: "Я не выхожу на улицу без марафета (макияжа/укладки). Мне важно выглядеть достойно." },
-        { type: 4, text: "Я часто в голове веду воображаемые диалоги, где я круто отвечаю хейтерам или рассказываю о своем успехе в интервью." },
+        { type: 4, text: "Меня реально бесит, когда я вижу, как откровенные тупицы поднимают миллионы, а я сижу в тени." },
+        { type: 4, text: "Если мое фото/пост в соцсетях набрало мало лайков, я хочу его удалить." },
+        { type: 4, text: "В моей жизни все не так «красиво», как я рассказываю друзьям или в соц. сетях." },
+        { type: 4, text: "Когда у «успешных» людей случается провал, я чувствую тайное облегчение." },
+        { type: 4, text: "Я не выхожу на улицу без марафета. Мне важно выглядеть достойно." },
+        { type: 4, text: "Я часто в голове веду воображаемые диалоги, где я круто отвечаю хейтерам." },
 
-        { type: 5, text: "Меня бесят советы в стиле «Просто возьми и сделай». Они не понимают, как мне тяжело и какая у меня ситуация." },
+        { type: 5, text: "Меня бесят советы в стиле «Просто возьми и сделай»." },
         { type: 5, text: "Я искренне не понимаю, почему другим всё падает с неба, а мне приходится выгрызать каждый сантиметр." },
         { type: 5, text: "Если бы у меня были богатые родители или связи, я бы уже давно был(а) на вершине." },
-        { type: 5, text: "Иногда хочется просто сесть и заплакать от бессилия, потому что проблемы наваливаются, и конца и края этому нет." },
-        { type: 5, text: "Я жду, что начальник сам заметит мои старания и повысит зарплату (и обижаюсь, что не замечает)." },
-        { type: 5, text: "Когда я вижу успешного молодого блогера, первая мысль: «Ну конечно, ему родители помогли или повезло»." },
+        { type: 5, text: "Иногда хочется просто сесть и заплакать от бессилия." },
+        { type: 5, text: "Я жду, что начальник сам заметит мои старания и повысит зарплату." },
+        { type: 5, text: "Когда я вижу успешного блогера, первая мысль: «Ну конечно, ему родители помогли»." },
 
-        { type: 6, text: "Терпеть не могу советы в духе «просто иди и сделай». Ну-ну. Если бы это было так просто, я бы уже давно сделал." },
-        { type: 6, text: "Мне нравятся схемы и таблички. Я могу днями собирать прототип проекта, но к самой работе так и не приступлю." },
-        { type: 6, text: "Я не понимаю людей, которые говорят «Просто я так чувствую». Мне нужны факты, логика и доказательства." },
-        { type: 6, text: "Я не могу просто взять и запустить проект, мне сначала нужно собрать схему и продумать детали." },
-        { type: 6, text: "Меня бесят люди которые громко смеются, рыдают напоказ или устраивают сцены. Зачем так орать? Можно же все обсудить конструктивно." },
-        { type: 6, text: "Я не люблю поверхностный подход. Мне хочется сделать что-то фундаментальное и уникальное. То, чего еще никто не делал." },
+        { type: 6, text: "Терпеть не могу советы в духе «просто иди и сделай»." },
+        { type: 6, text: "Я могу днями собирать прототип проекта, но к самой работе так и не приступлю." },
+        { type: 6, text: "Я не понимаю людей, которые говорят «Просто я так чувствую». Мне нужны факты." },
+        { type: 6, text: "Я не могу просто взять и запустить проект, мне сначала нужно собрать схему." },
+        { type: 6, text: "Меня бесят люди которые громко смеются или рыдают напоказ." },
+        { type: 6, text: "Я не люблю поверхностный подход. Мне хочется сделать что-то фундаментальное." },
 
-        { type: 7, text: "Я часто начинаю «новую жизнь» с понедельника: жесткая диета, спорт каждый день, подъем в 5 утра (и быстро бросаю)." },
-        { type: 7, text: "Меня тошнит от спокойной, размеренной жизни «дом-работа-дом», мне становится невыносимо скучно." },
+        { type: 7, text: "Я часто начинаю «новую жизнь» с понедельника и быстро бросаю." },
+        { type: 7, text: "Меня тошнит от спокойной, размеренной жизни «дом-работа-дом»." },
         { type: 7, text: "Мысль о том, что я буду жить в одной квартире 10 лет, вызывает у меня приступ удушья." },
-        { type: 7, text: "Иногда мне хочется просто бросить всё к чертям, удалить соцсети, уехать в глушь и начать с нуля." },
-        { type: 7, text: "Я часто смотрю билеты на самолет «просто так», даже если никуда не лечу. Это меня успокаивает." },
-        { type: 7, text: "У меня два режима: либо я пашу как терминатор 24/7, либо я лежу пластом и туплю в стену. Середины нет." },
+        { type: 7, text: "Иногда мне хочется просто бросить всё к чертям и уехать в глушь." },
+        { type: 7, text: "Я часто смотрю билеты на самолет «просто так»." },
+        { type: 7, text: "У меня два режима: либо я пашу как терминатор, либо я лежу пластом." },
 
-        { type: 8, text: "Если мне принесли в ресторане невкусную еду, я скорее съем её молча, чем позову официанта и устрою разборки." },
-        { type: 8, text: "Мне сложно отказывать, поэтому я часто соглашаюсь на неудобные условия (выйти в выходной, подвезти, занять денег)." },
-        { type: 8, text: "Я не люблю накалять обстановку. Даже, если я вижу, что человек мне врет я не буду ему этим тыкать в лицо." },
-        { type: 8, text: "Мне проще простить долг или сделать работу бесплатно, чем звонить и напоминать о деньгах." },
-        { type: 8, text: "После разговора я часто думаю: «Блин, надо было ему ответить вот так!», но в моменте я просто улыбался и кивал." },
-        { type: 8, text: "Если близкий человек ходит с недовольным лицом или молчит, меня сразу накрывает тревога: «Может я сделал что-то не так?»." },
+        { type: 8, text: "Если мне принесли невкусную еду, я скорее съем её молча, чем позову официанта." },
+        { type: 8, text: "Мне сложно отказывать, поэтому я часто соглашаюсь на неудобные условия." },
+        { type: 8, text: "Даже, если я вижу, что человек мне врет я не буду ему этим тыкать в лицо." },
+        { type: 8, text: "Мне проще простить долг, чем звонить и напоминать о деньгах." },
+        { type: 8, text: "После разговора я часто думаю: «Блин, надо было ему ответить вот так!»." },
+        { type: 8, text: "Если близкий человек ходит с недовольным лицом, меня накрывает тревога." },
 
-        { type: 9, text: "Когда я слышу про «легкий заработок» или успешный кейс, я сразу думаю: «Ага, конечно, развод для лохов»." },
-        { type: 9, text: "Меня дико раздражают слишком позитивные люди с их «улыбками и вибрациями». Мне кажется, это всё фальшь и лицемерие." },
-        { type: 9, text: "Я считаю, что большинство психологов и коучей это инфоцыгане, которые продают воздух." },
-        { type: 9, text: "Когда я вижу романтические признания в любви в соцсетях, меня тянет блевать. Я уверен, что это показуха." },
-        { type: 9, text: "Прежде чем что-то купить или куда-то пойти, я буду час гуглить негативные отзывы, чтобы убедиться, что меня не кинут." },
-        { type: 9, text: "Я получаю тайное удовольствие, когда нахожу ошибку у какого-то «гуру» и понимаю, что он не такой уж и умный." },
+        { type: 9, text: "Когда я слышу про «легкий заработок», я сразу думаю: «Развод для лохов»." },
+        { type: 9, text: "Меня дико раздражают слишком позитивные люди." },
+        { type: 9, text: "Я считаю, что большинство психологов и коучей это инфоцыгане." },
+        { type: 9, text: "Когда я вижу романтические признания в соцсетях, меня тянет блевать." },
+        { type: 9, text: "Прежде чем что-то купить, я буду час гуглить негативные отзывы." },
+        { type: 9, text: "Я получаю удовольствие, когда нахожу ошибку у какого-то «гуру»." },
 
-        { type: 10, text: "Меня воротит от слова «продажи» и «прогревы». Я считаю, что хороший продукт должен продавать себя сам." },
-        { type: 10, text: "Мне обидно видеть, как люди сходят с ума по всякому примитивному мусору, а что-то реально стоящее и глубокое никому не нужно." },
-        { type: 10, text: "У меня есть ощущение, что если я начну гоняться за деньгами, то потеряю что-то важное внутри, продам душу." },
-        { type: 10, text: "Честно говоря, мне кажется, что мои идеи слишком сложные для большинства людей. Они просто не догоняют." },
-        { type: 10, text: "Я смотрю на некоторых «популярных» экспертов и искренне не понимаю: ну как можно восхищаться такой посредственностью?" },
-        { type: 10, text: "Мне кажется, что деньги и настоящее творчество/духовность вещи несовместимые." },
+        { type: 10, text: "Меня воротит от слова «продажи» и «прогревы»." },
+        { type: 10, text: "Мне обидно видеть, как люди сходят с ума по мусору, а стоящее никому не нужно." },
+        { type: 10, text: "У меня есть ощущение, что если я начну гоняться за деньгами, то продам душу." },
+        { type: 10, text: "Мне кажется, что мои идеи слишком сложные для большинства людей." },
+        { type: 10, text: "Я смотрю на популярных экспертов и не понимаю: как можно восхищаться такой посредственностью?" },
+        { type: 10, text: "Мне кажется, что деньги и настоящее творчество несовместимые." },
 
-        { type: 11, text: "Я не могу смотреть, как другие моют посуду или готовят «неправильно». Проще отобрать и сделать самому." },
-        { type: 11, text: "Я часто ловлю себя на мысли: «Господи, если я сейчас умру, они же тут все зарастут грязью»." },
-        { type: 11, text: "Меня бесит, когда люди опаздывают или меняют планы в последний момент." },
-        { type: 11, text: "Я прошу близких: «Напиши, как доедешь», а если они не пишут через час, я начинаю звонить и паниковать." },
-        { type: 11, text: "Перед выходом из дома я возвращаюсь проверить, выключил ли я утюг/свет/закрыл ли дверь. Иногда дважды." },
-        { type: 11, text: "Даже в отпуске я держу руку на пульсе: билеты, маршруты, время — всё должно быть под контролем. Мало ли что." },
+        { type: 11, text: "Я не могу смотреть, как другие моют посуду «неправильно». Проще сделать самому." },
+        { type: 11, text: "Я часто ловлю себя на мысли: «Господи, если я сейчас умру, они же тут все пропадут»." },
+        { type: 11, text: "Меня бесит, когда люди опаздывают." },
+        { type: 11, text: "Я прошу близких: «Напиши, как доедешь», а если не пишут, я начинаю паниковать." },
+        { type: 11, text: "Перед выходом из дома я возвращаюсь проверить утюг/дверь. Иногда дважды." },
+        { type: 11, text: "Даже в отпуске я держу руку на пульсе: всё должно быть под контролем." },
 
-        { type: 12, text: "Как только мне говорят «ты должен» или «надо», у меня это вызывает сопротивление и я сразу хочу сделать наоборот." },
-        { type: 12, text: "Я ненавижу графики и жесткие рамки. Я чувствую себя как в тюрьме, если мой день расписан." },
-        { type: 12, text: "У меня аллергия на авторитеты. Когда начальник или «гуру» начинает учить меня жизни, мне хочется послать его." },
-        { type: 12, text: "Мне сложно работать в найме или в системе, потому что я физически не переношу, когда мною командуют." },
-        { type: 12, text: "Я считаю, что правила придуманы для дураков и не отдам никому свою свободу." },
-        { type: 12, text: "Я часто опаздываю или нарушаю правила просто потому, что мое нутро сопротивляется жизни в рамках." },
+        { type: 12, text: "Как только мне говорят «надо», я сразу хочу сделать наоборот." },
+        { type: 12, text: "Я ненавижу графики и жесткие рамки." },
+        { type: 12, text: "Когда начальник или «гуру» начинает учить меня жизни, мне хочется послать его." },
+        { type: 12, text: "Мне сложно работать в найме, потому что я не переношу, когда мною командуют." },
+        { type: 12, text: "Я считаю, что правила придуманы для дураков." },
+        { type: 12, text: "Я часто опаздываю или нарушаю правила просто потому, что нутро сопротивляется." },
 
-        { type: 13, text: "Я часто чувствую себя помойкой: все сливают на меня свои проблемы, а когда плохо мне — у всех резко нет времени." },
-        { type: 13, text: "Меня обижает, когда я выворачиваюсь наизнанку ради человека, а он даже «спасибо» не скажет." },
-        { type: 13, text: "Я трачу кучу времени, разгребая чужие проблемы, а на свою собственную жизнь у меня сил не остается." },
-        { type: 13, text: "Я даю деньги в долг, хотя у самого сейчас впритык, потому что «ему нужнее»." },
+        { type: 13, text: "Я часто чувствую себя помойкой: все сливают на меня проблемы." },
+        { type: 13, text: "Меня обижает, когда я выворачиваюсь наизнанку, а мне даже «спасибо» не скажут." },
+        { type: 13, text: "Я трачу кучу времени, разгребая чужие проблемы." },
+        { type: 13, text: "Я даю деньги в долг, хотя у самого впритык, потому что «ему нужнее»." },
         { type: 13, text: "Мне больно смотреть, как другие мучаются и хочется помочь." },
         { type: 13, text: "Я часто думаю: «Почему я для них всё, а они этого не ценят»." },
 
-        { type: 14, text: "Я не парюсь о деньгах и счетах, я верю, что «Вселенная обо мне позаботится»." },
-        { type: 14, text: "Меня раздражают разговоры про налоги, политику и бытовуху — это «низкие вибрации»." },
-        { type: 14, text: "Все мои проблемы и конфликты: «Это просто мой кармический урок». Все наладится." },
-        { type: 14, text: "Меня раздражают «неосознанные» люди (мясоеды, офисные работники). Мне с ними тяжело, они «фонят» негативом." },
-        { type: 14, text: "Я считаю, что работать на обычной работе — это рабство системы." },
-        { type: 14, text: "Мне сложно принять решение без астрологического разбора или ТАРО (или т.п.). Я часто полагаюсь на эти инструменты." },
+        { type: 14, text: "Я не парюсь о деньгах, я верю, что «Вселенная позаботится»." },
+        { type: 14, text: "Меня раздражают разговоры про налоги и бытовуху — это «низкие вибрации»." },
+        { type: 14, text: "Все мои проблемы: «Это просто мой кармический урок»." },
+        { type: 14, text: "Меня раздражают «неосознанные» люди (мясоеды, офисные работники)." },
+        { type: 14, text: "Я считаю, что работать на обычной работе — это рабство." },
+        { type: 14, text: "Мне сложно принять решение без астрологии или ТАРО." },
 
-        { type: 15, text: "Меня бесят современные тренды (тик-токи, губы, песни). Мне кажется, что мир катится в пропасть и идет тотальная деградация." },
-        { type: 15, text: "Я часто читаю комментарии в интернете просто чтобы побомбить с того, какие люди тупые." },
-        { type: 15, text: "Меня физически трясет, когда я вижу как какое-то быдло лезет без очереди, громко чавкает или паркуется на два места." },
-        { type: 15, text: "Меня раздражает человеческая глупость и наивность. Иногда мне кажется, что я живу в зоопарке или среди идиотов." },
-        { type: 15, text: "Вера в человечество? Не смешите. Люди — это эгоистичные существа, которым нужны только деньги, власть и секс." },
-        { type: 15, text: "Я не могу промолчать, если вижу, что кто-то неправ. Несправедливость должны быть наказана!" },
+        { type: 15, text: "Меня бесят современные тренды. Мир катится в пропасть." },
+        { type: 15, text: "Я часто читаю комментарии, просто чтобы побомбить с того, какие люди тупые." },
+        { type: 15, text: "Меня трясет, когда я вижу как быдло лезет без очереди." },
+        { type: 15, text: "Меня раздражает человеческая глупость." },
+        { type: 15, text: "Вера в человечество? Люди — это эгоистичные существа." },
+        { type: 15, text: "Я не могу промолчать, если вижу, что кто-то неправ." },
 
-        { type: 16, text: "Я часто пишу комментарий в чат или пост, перечитываю его, думаю «Да кому это интересно?» и стираю, так и не отправив." },
-        { type: 16, text: "Когда меня спрашивают «сколько стоит?», я начинаю смущаться и называю цену ниже, чем хотел." },
-        { type: 16, text: "Я не завожу блог, потому что считаю, что мне нечего особенного дать этому миру. И так уже куча информации и экспертов." },
-        { type: 16, text: "В Zoom-конференциях или на обучениях я всегда сижу с выключенной камерой и микрофоном, молясь, чтобы меня не спросили." },
-        { type: 16, text: "Я ненавижу фотографироваться или снимать сторис с говорящей головой. На общих фото я всегда стараюсь встать сзади или с краю." },
-        { type: 16, text: "Когда меня публично хвалят, я чувствую себя неловко и говорю: «Ой, да ничего особенного, просто повезло»." },
+        { type: 16, text: "Я часто пишу комментарий, думаю «Да кому это интересно?» и стираю." },
+        { type: 16, text: "Когда меня спрашивают «сколько стоит?», я смущаюсь и называю цену ниже." },
+        { type: 16, text: "Я не завожу блог, потому что мне нечего особенного дать миру." },
+        { type: 16, text: "В Zoom я всегда сижу с выключенной камерой." },
+        { type: 16, text: "Я ненавижу фотографироваться." },
+        { type: 16, text: "Когда меня хвалят, я говорю: «Ой, да ничего особенного»." },
 
-        { type: 17, text: "Я думаю, что никто ничего не делает просто так. Если человек помогает или делает добро — значит, он либо хочет что-то получить взамен, либо тешит своё самолюбие." },
-        { type: 17, text: "Когда я слышу про «вечную любовь» или «счастливые семьи», я лишь ухмыляюсь. Я-то знаю, что всё это рано или поздно заканчивается изменами, скукой или дележкой имущества." },
-        { type: 17, text: "Мой жизненный опыт доказал: «Не делай добра — не получишь зла». Лучше ни во что не вмешиваться и никого не подпускать близко, чтобы потом не вытирать плевки с души." },
-        { type: 17, text: "Меня часто упрекают в черствости или жестком юморе, но я считаю, что лучше посмеяться над проблемой, чем разводить нытье и жалеть себя." },
-        { type: 17, text: "Мне кажется, что мир окончательно прогнил. Кругом одни лицемеры, которые носят маски приличия, но продадут тебя при первой же возможности." },
-        { type: 17, text: "Когда кто-то проявляет ко мне искреннюю заботу, я напрягаюсь и ищу, где подвох: «Что тебе от меня надо?»" }
+        { type: 17, text: "Если человек делает добро — он либо хочет что-то взамен, либо тешит самолюбие." },
+        { type: 17, text: "Счастливые семьи — это миф. Всё заканчивается изменами или скукой." },
+        { type: 17, text: "Не делай добра — не получишь зла." },
+        { type: 17, text: "Лучше посмеяться над проблемой, чем разводить нытье." },
+        { type: 17, text: "Мир прогнил. Кругом лицемеры." },
+        { type: 17, text: "Когда кто-то проявляет заботу, я ищу подвох: «Что тебе надо?»" }
     ];
 
-    // State
     let currentQuestions = [];
     let currentQuestionIndex = 0;
-    let scores = {}; // Map of typeId -> score
-    let testMode = 'full'; // 'full' or 'express'
+    let scores = {};
     let currentWinnerId = null;
 
-    // --- LOGIC ---
-
-    // Initialize Scores
     function initScores() {
         for (let i = 1; i <= 17; i++) {
             scores[i] = 0;
         }
     }
 
-    // Shuffle Array
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -481,39 +423,29 @@
         return array;
     }
 
-    // Prepare Questions based on Mode
     function prepareQuestions(mode) {
         initScores();
-        testMode = mode;
         let finalQuestions = [];
 
         if (mode === 'full') {
-            // All questions
             finalQuestions = [...RAW_QUESTIONS];
         } else {
-            // Express: 3 random questions per type
             for (let i = 1; i <= 17; i++) {
                 const typeQuestions = RAW_QUESTIONS.filter(q => q.type === i);
                 const shuffled = shuffleArray([...typeQuestions]);
                 finalQuestions.push(...shuffled.slice(0, 3));
             }
         }
-
-        // Shuffle all questions so types are mixed
         currentQuestions = shuffleArray(finalQuestions);
         currentQuestionIndex = 0;
     }
 
-    // Start Test Workflow
     function startTest(mode) {
-        // 1. Show Warning Overlay
         const overlay = document.getElementById('warning-overlay');
         overlay.classList.add('active');
 
-        // 2. Prepare Data in background
         prepareQuestions(mode);
 
-        // 3. After 3 seconds, hide overlay and show quiz
         setTimeout(() => {
             overlay.classList.remove('active');
             document.getElementById('home-page').classList.add('hidden');
@@ -522,35 +454,23 @@
         }, 3000);
     }
 
-    // Render Current Question
     function renderQuestion() {
         const q = currentQuestions[currentQuestionIndex];
         const counterEl = document.getElementById('question-counter');
         const textEl = document.getElementById('question-text');
         const fillEl = document.getElementById('progress-fill');
 
-        // Text
         textEl.innerText = q.text;
-        
-        // Counter
         counterEl.innerText = `${currentQuestionIndex + 1} / ${currentQuestions.length}`;
-        
-        // Progress Bar
         const percent = ((currentQuestionIndex) / currentQuestions.length) * 100;
         fillEl.style.width = `${percent}%`;
 
-        // Scroll to top of question card
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Handle Answer Click
     function handleAnswer(points) {
         const q = currentQuestions[currentQuestionIndex];
-        
-        // Add Score
         scores[q.type] += points;
-
-        // Next Question or Finish
         currentQuestionIndex++;
         if (currentQuestionIndex < currentQuestions.length) {
             renderQuestion();
@@ -559,14 +479,11 @@
         }
     }
 
-    // Finish Test & Show Results
     function finishTest() {
         document.getElementById('quiz-page').classList.add('hidden');
         document.getElementById('results-page').classList.remove('hidden');
         window.scrollTo(0,0);
 
-        // 1. Process Scores
-        // Convert scores object to array: [{typeId, score, ...data}]
         const resultsArray = Object.keys(scores).map(typeId => {
             const id = parseInt(typeId);
             return {
@@ -577,29 +494,25 @@
             };
         });
 
-        // Sort by Score DESC
         resultsArray.sort((a, b) => b.score - a.score);
 
-        // 2. Render Description of Winner
         const winner = resultsArray[0];
-        currentWinnerId = winner.id; // Store for fetching long text later
+        currentWinnerId = winner.id;
         
         document.getElementById('winner-name').innerText = winner.name;
-        // Загрузка краткого описания (если оно есть в DESCRIPTIONS)
-        if(DESCRIPTIONS[winner.id]) {
-             document.getElementById('winner-description').innerHTML = DESCRIPTIONS[winner.id];
+        
+        // Подгружаем краткое описание из локального объекта
+        if(SHORT_DESCRIPTIONS[winner.id]) {
+             document.getElementById('winner-description').innerHTML = SHORT_DESCRIPTIONS[winner.id];
         } else {
-            // Фолбэк, если краткое описание не загрузилось из переменной
-             document.getElementById('winner-description').innerHTML = "<p>Краткое описание загружается...</p>";
+             document.getElementById('winner-description').innerHTML = "<p>Описание формируется...</p>";
         }
 
-        // 3. Draw Chart (Top 3)
         const top3 = resultsArray.slice(0, 3);
         drawChart(top3);
         renderLegend(top3);
     }
 
-    // Draw Chart.js
     function drawChart(top3Data) {
         const ctx = document.getElementById('resultsChart').getContext('2d');
         
@@ -609,11 +522,7 @@
                 labels: top3Data.map(i => i.name),
                 datasets: [{
                     data: top3Data.map(i => i.score),
-                    backgroundColor: [
-                        '#0066FF', // Main Blue
-                        '#0044AA', // Darker Blue
-                        '#002255'  // Deep Navy
-                    ],
+                    backgroundColor: ['#0066FF', '#0044AA', '#002255'],
                     borderWidth: 0,
                     hoverOffset: 4
                 }]
@@ -621,20 +530,15 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '65%', // Thickness of ring
+                cutout: '65%',
                 plugins: {
-                    legend: {
-                        display: false // We use custom legend
-                    },
-                    tooltip: {
-                        enabled: false
-                    }
+                    legend: { display: false },
+                    tooltip: { enabled: false }
                 }
             }
         });
     }
 
-    // Render Custom Legend
     function renderLegend(top3Data) {
         const legendContainer = document.getElementById('chart-legend');
         const colors = ['#0066FF', '#0044AA', '#002255'];
@@ -652,25 +556,26 @@
             `;
         });
         legendContainer.innerHTML = html;
-        
-    // 4. ЛОГИКА КНОПКИ (БЕРЕТ ДАННЫЕ ИЗ DATA.JS)
+    }
+
+    // ЛОГИКА ОТКРЫТИЯ ПОДРОБНОГО ОПИСАНИЯ
     function toggleLongText() {
         const block = document.getElementById('long-text-block');
         const container = document.getElementById('long-text-container');
-        const btn = document.getElementById('action-btn');
         
+        // Если блок еще не открыт
         if (!block.classList.contains('visible')) {
+            // Проверяем, загрузилась ли база данных из внешнего файла
             if (window.EGO_FULL_DESCRIPTIONS && window.EGO_FULL_DESCRIPTIONS[currentWinnerId]) {
                 container.innerHTML = window.EGO_FULL_DESCRIPTIONS[currentWinnerId];
             } else {
-                container.innerHTML = '<p style="text-align:center;">Загрузка описания...</p>';
+                container.innerHTML = '<p style="text-align:center;">Описание не найдено или файл базы данных (descriptions.js) не подключен.</p>';
             }
-            btn.innerText = "СВЕРНУТЬ";
-        } else {
-            btn.innerText = "УЗНАТЬ ПОДРОБНЕЕ";
         }
+        
         block.classList.toggle('visible');
     }
 </script>
+
 </body>
 </html>
