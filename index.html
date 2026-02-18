@@ -472,7 +472,6 @@
     }
 
     function renderQuestion() {
-        // Проверка безопасности: если вдруг индекс вышел за пределы (хотя не должен)
         if (currentQuestionIndex >= currentQuestions.length) {
             finishTest();
             return;
@@ -485,11 +484,13 @@
 
         textEl.innerText = q.text;
         
-        // Обновляем счетчик цифрами (1 / 51)
+        // Счетчик показывает: 1 / 51 (человеческий счет)
         counterEl.innerText = `${currentQuestionIndex + 1} / ${currentQuestions.length}`;
         
-        // ИСПРАВЛЕНИЕ: Теперь полоска считает текущий вопрос как пройденный этап визуально
-        const percent = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
+        // Шкала показывает: 0% на старте (прогресс выполнения)
+        // На последнем вопросе будет ~98%, побуждая нажать последнюю кнопку
+        const percent = (currentQuestionIndex / currentQuestions.length) * 100;
+        
         fillEl.style.width = `${percent}%`;
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
