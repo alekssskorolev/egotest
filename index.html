@@ -603,13 +603,11 @@
                 // 1. Берем чистый текст из базы
                 const rawText = window.EGO_FULL_DESCRIPTIONS[currentWinnerId];
                 
-                // 2. Получаем баллы победителя из глобального объекта scores
+                // 2. Получаем баллы победителя
                 const winnerScore = scores[currentWinnerId]; 
                 
                 // 3. Формируем Дисклеймер
                 let disclaimer = '';
-                
-                // Проверка на случай, если баллы почему-то не определились (защита от ошибок)
                 const safeScore = winnerScore !== undefined ? winnerScore : 0;
 
                 if (safeScore >= 15) {
@@ -649,16 +647,6 @@
         block.classList.toggle('visible');
     }
 
-                // 4. Соединяем Дисклеймер + Текст
-                container.innerHTML = disclaimer + rawText;
-                
-            } else {
-                container.innerHTML = '<p style="text-align:center;">Описание не найдено.</p>';
-            }
-        }
-        
-        block.classList.toggle('visible');
-    }
-
+</script>
 </body>
 </html>
