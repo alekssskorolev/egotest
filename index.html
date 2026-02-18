@@ -96,28 +96,26 @@
         .detail-label { font-weight: 800; color: var(--accent-color); margin-bottom: 5px; display: block; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Стиль для кнопки разворачивания описания (Второстепенная кнопка) */
-        .long-text-toggle {
+.long-text-toggle {
     text-align: center;
     margin: 30px auto;
     cursor: pointer;
     color: var(--accent-color);
     font-weight: 700;
     text-decoration: none;
-    
     background-color: #EDF2F7;
     padding: 15px 30px;
     border-radius: 12px;
     display: block;
     width: fit-content;
     transition: all 0.2s ease;
-    
-    /* Тот самый легкий бордер */
-    border: 1px solid rgba(26, 32, 44, 0.15); 
+    /* Тот самый легкий черный бордер (полупрозрачный) */
+    border: 1px solid rgba(0, 0, 0, 0.15); 
 }
 
 .long-text-toggle:hover {
     background-color: #E2E8F0;
-    border-color: rgba(26, 32, 44, 0.3); /* При наведении рамка чуть четче */
+    border-color: rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
         
@@ -148,17 +146,29 @@
 
         .cta-section { text-align: center; margin-top: 40px; margin-bottom: 60px; }
         
-        .cta-text { 
+        /* Контейнер для текста и стрелки */
+.cta-text { 
     font-size: 18px; 
     font-weight: 700; 
-    margin-bottom: 20px; 
+    margin: 40px auto 20px; /* Отступы: сверху 40, сбоку авто, снизу 20 */
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Центрирует всё вместе */
+    justify-content: center; 
     gap: 10px;
-    flex-wrap: wrap; /* Чтобы на совсем мелких экранах стрелка не вылетала */
+    flex-wrap: nowrap; /* Запрещаем разрыв, чтобы стрелка не улетала */
+    width: 100%;
 }
-        .arrow-icon { width: 24px; height: 24px; fill: var(--text-color); animation: bounce 2s infinite; }
+
+/* Сама стрелка — принудительно задаем цвет и размер */
+.arrow-icon { 
+    width: 20px; 
+    height: 20px; 
+    min-width: 20px; /* Чтобы не сжималась */
+    fill: #1A202C !important; /* Принудительно темно-серый цвет */
+    animation: bounce 2s infinite; 
+    display: inline-block;
+}
+        
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
         .btn-cta { background-color: var(--accent-color); color: #FFFFFF !important; padding: 22px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; display: inline-block; box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4); transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; letter-spacing: 0.5px; text-transform: uppercase; }
         .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0, 102, 255, 0.5); }
