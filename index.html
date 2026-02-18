@@ -96,11 +96,14 @@
         .long-text-toggle { text-align: center; margin: 20px 0; cursor: pointer; color: var(--accent-color); font-weight: 600; text-decoration: underline; }
         .long-text-content { display: none; background: white; padding: 30px; border-radius: var(--border-radius); margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: var(--text-color); box-shadow: var(--shadow); }
         .long-text-content.visible { display: block; }
+
         /* Контент длинного текста - форматирование */
         #long-text-container h3 { text-align: center; color: var(--accent-color); margin-bottom: 20px; }
-        
-        /* ВОТ ЗДЕСЬ ИЗМЕНЕНИЯ: */
-        #long-text-container p { margin-bottom: 12px; } /* Уменьшили отступ */
+        #long-text-container p { 
+            margin-bottom: 0; /* Убираем отступ снизу */
+            margin-top: 0;    /* Убираем отступ сверху */
+            line-height: 1.6; /* Оставляем комфортную высоту строки */
+        }
         #long-text-container br { display: none; }      /* Убрали лишние переносы */
         
         #long-text-container ul { margin-bottom: 15px; padding-left: 20px; }
