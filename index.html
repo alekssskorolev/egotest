@@ -543,14 +543,16 @@
         const legendContainer = document.getElementById('chart-legend');
         const colors = ['#0066FF', '#0044AA', '#002255'];
         
-        let html = '';
+        // 1. Добавили заголовок перед списком
+        let html = '<div style="margin-bottom: 15px; font-weight: 700; color: #718096; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">ТОП-3 Эго-конструкции:</div>';
+
         top3Data.forEach((item, index) => {
             html += `
                 <div class="legend-item">
                     <div class="legend-color" style="background-color: ${colors[index]}"></div>
                     <div class="legend-text">
                         <span>${index + 1}. ${item.name}</span>
-                        <span class="legend-score">${item.score} б.</span>
+                        <span class="legend-score">${item.score} / 18 б.</span>
                     </div>
                 </div>
             `;
