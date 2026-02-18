@@ -590,24 +590,61 @@
         legendContainer.innerHTML = html;
     }
 
-    // ЛОГИКА ОТКРЫТИЯ ПОДРОБНОГО ОПИСАНИЯ
     function toggleLongText() {
         const block = document.getElementById('long-text-block');
         const container = document.getElementById('long-text-container');
         
-        // Если блок еще не открыт
         if (!block.classList.contains('visible')) {
-            // Проверяем, загрузилась ли база данных из внешнего файла
             if (window.EGO_FULL_DESCRIPTIONS && window.EGO_FULL_DESCRIPTIONS[currentWinnerId]) {
-                container.innerHTML = window.EGO_FULL_DESCRIPTIONS[currentWinnerId];
+                
+                // 1. Берем базовый текст
+                const rawText = window.EGO_FULL_DESCRIPTIONS[currentWinnerId];
+                
+                // 2. Определяем уровень "заражения" (score) победителя
+                // Нам нужно найти баллы победителя. Мы их знаем, они были в массиве результатов.
+                // Но чтобы не усложнять, давай вытащим их из объекта scores
+                const winnerScore = scores[currentWinnerId]; 
+                
+                // 3. Формируем Дисклеймер (Преамбулу)
+                let disclaimer = '';
+                let disclaimerColor = '';
+                
+                if (winnerScore >= 15) {
+                    disclaimerColor = '#E53E3E'; // Красный
+                    disclaimer = `
+                        <div style="background: rgba(229, 62, 62, 0.1); border-left: 4px solid ${disclaimerColor}; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
+                            <strong style="color: ${disclaimerColor}; display:block; margin-bottom:5px;">⚠️ УРОВЕНЬ ВЛИЯНИЯ: КРИТИЧЕСКИЙ (${winnerScore}/18)</strong>
+                            Эта программа управляет тобой на 90%. Описание ниже — это твоя буквальная реальность. Читая, ты можешь почувствовать желание поспорить — это защитная реакция. Просто допусти, что это может быть правдой.
+                        </div>
+                    `;
+                } else if (winnerScore >= 10) {
+                    disclaimerColor = '#DD6B20'; // Оранжевый
+                    disclaimer = `
+                        <div style="background: rgba(221, 107, 32, 0.1); border-left: 4px solid ${disclaimerColor}; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
+                            <strong style="color: ${disclaimerColor}; display:block; margin-bottom:5px;">⚠️ УРОВЕНЬ ВЛИЯНИЯ: СРЕДНИЙ (${winnerScore}/18)</strong>
+                            Программа активна, но ты умеешь её маскировать. Описание ниже дано в <b>максимальной амплитуде</b> (как если бы у тебя было 18 баллов). Это сделано специально, чтобы ты увидел "чистый вид" вируса. Если что-то кажется "слишком жестким" — просто делай поправку на то, что у тебя это проявлено мягче.
+                        </div>
+                    `;
+                } else {
+                    disclaimerColor = '#38A169'; // Зеленый
+                    disclaimer = `
+                        <div style="background: rgba(56, 161, 105, 0.1); border-left: 4px solid ${disclaimerColor}; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
+                            <strong style="color: ${disclaimerColor}; display:block; margin-bottom:5px;">✅ УРОВЕНЬ ВЛИЯНИЯ: СПЯЩИЙ (${winnerScore}/18)</strong>
+                            Эта программа не является твоей ведущей проблемой сейчас. Описание ниже — это "преувеличенная" версия. Читай это как предупреждение: что будет, если дать этой программе волю на 100%.
+                        </div>
+                    `;
+                }
+
+                // 4. Соединяем Дисклеймер + Текст
+                container.innerHTML = disclaimer + rawText;
+                
             } else {
-                container.innerHTML = '<p style="text-align:center;">Описание не найдено или файл базы данных (descriptions.js) не подключен.</p>';
+                container.innerHTML = '<p style="text-align:center;">Описание не найдено.</p>';
             }
         }
         
         block.classList.toggle('visible');
     }
-</script>
 
 </body>
 </html>
