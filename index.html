@@ -123,25 +123,25 @@
             transform: translateY(-2px);
         }
 
-        /* Создаем сам "свет" (псевдоэлемент) */
+        /* Создаем сам "свет" (псевдоэлемент) - ЯРКАЯ ВЕРСИЯ */
         .long-text-toggle::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -150%; /* Начинаем слева за границей кнопки */
-            width: 80%;  /* Ширина световой полосы */
+            left: -100px; /* Старт левее */
+            width: 50px;  /* Делаем луч узким (было 80%), чтобы он был четче */
             height: 100%;
             
-            /* Градиент: Прозрачный -> Белый -> Прозрачный */
+            /* Градиент: Резкий переход в чистый белый */
             background: linear-gradient(
                 to right, 
                 rgba(255, 255, 255, 0) 0%, 
-                rgba(255, 255, 255, 0.8) 50%, 
+                rgba(255, 255, 255, 1) 50%, /* Чистый белый, непрозрачный */
                 rgba(255, 255, 255, 0) 100%
             );
             
-            transform: skewX(-25deg); /* Наклон полосы */
-            animation: shine 4s infinite; /* Запускаем анимацию */
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
         }
 
         /* Настройка движения */
@@ -178,26 +178,13 @@
 
         .cta-section { text-align: center; margin-top: 40px; margin-bottom: 60px; }
         
-        /* Контейнер для текста и стрелки */
+        /* Кнопка: "получить решение" */
 .cta-text { 
     font-size: 18px; 
     font-weight: 700; 
-    margin: 40px auto 10px; /* Уменьшили нижний отступ */
-    display: flex; 
-    flex-direction: column; /* СТАВИМ ТЕКСТ И СТРЕЛКУ ДРУГ ПОД ДРУГОМ */
-    align-items: center; 
-    justify-content: center; 
-    gap: 5px; /* Расстояние между текстом и стрелкой */
-    width: 100%;
+    margin: 40px auto 20px;
     text-align: center;
-}
-
-.arrow-icon { 
-    width: 24px; 
-    height: 24px; 
-    fill: #1A202C !important; 
-    animation: bounce 2s infinite; 
-    display: block; /* Гарантирует, что иконка ведет себя как блок */
+    width: 100%;
 }
         
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
@@ -320,11 +307,8 @@
         </div>
 
         <div class="cta-text">
-            <span>Жми на кнопку ниже, чтобы узнать решение</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 16L6 10H18L12 16Z"/>
-            </svg>
-        </div>
+    Жми на кнопку ниже, чтобы узнать решение 👇
+</div>
 
         <div style="text-align: center; margin-bottom: 60px;">
             <a href="https://aleksskorolev.ru/master-class" class="btn-cta">ПОЛУЧИТЬ РЕШЕНИЕ</a>
