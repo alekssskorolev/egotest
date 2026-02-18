@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
 
     <style>
         /* --- НАСТРОЙКИ ДИЗАЙНА (CSS) --- */
@@ -489,9 +489,9 @@
         // Счетчик показывает: 1 / 51 (человеческий счет)
         counterEl.innerText = `${currentQuestionIndex + 1} / ${currentQuestions.length}`;
         
-        // Шкала показывает: 0% на старте (прогресс выполнения)
-        // На последнем вопросе будет ~98%, побуждая нажать последнюю кнопку
-        const percent = (currentQuestionIndex / currentQuestions.length) * 100;
+        // Формула: (Текущий / Всего * 100), но не меньше 2% (чтобы было видно старт)
+        let percent = (currentQuestionIndex / currentQuestions.length) * 100;
+        if (percent < 2) percent = 2; // Минимальная заливка на старте
         
         fillEl.style.width = `${percent}%`;
 
