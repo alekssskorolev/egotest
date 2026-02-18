@@ -98,7 +98,11 @@
         .long-text-content.visible { display: block; }
         /* Контент длинного текста - форматирование */
         #long-text-container h3 { text-align: center; color: var(--accent-color); margin-bottom: 20px; }
-        #long-text-container p { margin-bottom: 15px; }
+        
+        /* ВОТ ЗДЕСЬ ИЗМЕНЕНИЯ: */
+        #long-text-container p { margin-bottom: 12px; } /* Уменьшили отступ */
+        #long-text-container br { display: none; }      /* Убрали лишние переносы */
+        
         #long-text-container ul { margin-bottom: 15px; padding-left: 20px; }
         #long-text-container li { margin-bottom: 5px; }
 
