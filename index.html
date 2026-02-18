@@ -613,15 +613,15 @@
                 if (safeScore >= 15) {
                     // КРИТИЧЕСКИЙ УРОВЕНЬ
                     disclaimer = `
-                        <div style="background: rgba(229, 62, 62, 0.1); border-left: 4px solid #E53E3E; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
+                        <div style="background: rgba(229, 62, 62, 0.1); border-left: 4px solid #E53E3E; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 15px; color: #2D3748;">
                             <strong style="color: #E53E3E; display:block; margin-bottom:5px;">⚠️ УРОВЕНЬ ВЛИЯНИЯ: КРИТИЧЕСКИЙ (${safeScore}/18)</strong>
-                            Эта программа управляет тобой на 90%. Описание ниже — это твоя буквальная реальность. Читая, не пытайся защищаться, просто признай факт.
+                            Эта программа управляет тобой на 90%+. Описание ниже — это твоя буквальная реальность. Читая, не пытайся защищаться, просто признай факт.
                         </div>
                     `;
                 } else if (safeScore >= 10) {
                     // СРЕДНИЙ УРОВЕНЬ
                     disclaimer = `
-                        <div style="background: rgba(221, 107, 32, 0.1); border-left: 4px solid #DD6B20; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
+                        <div style="background: rgba(221, 107, 32, 0.1); border-left: 4px solid #DD6B20; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 15px; color: #2D3748;">
                             <strong style="color: #DD6B20; display:block; margin-bottom:5px;">⚠️ УРОВЕНЬ ВЛИЯНИЯ: СРЕДНИЙ (${safeScore}/18)</strong>
                             Программа активна, но ты умеешь её маскировать. Описание ниже дано в <b>максимальной амплитуде</b>. Если что-то кажется "слишком жестким" — делай поправку на то, что у тебя это проявлено мягче.
                         </div>
@@ -629,9 +629,9 @@
                 } else {
                     // НИЗКИЙ УРОВЕНЬ
                     disclaimer = `
-                        <div style="background: rgba(56, 161, 105, 0.1); border-left: 4px solid #38A169; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; color: #2D3748;">
-                            <strong style="color: #38A169; display:block; margin-bottom:5px;">✅ УРОВЕНЬ ВЛИЯНИЯ: СПЯЩИЙ (${safeScore}/18)</strong>
-                            Эта программа сейчас спит. Описание ниже — это "преувеличенная" версия. Читай это как предупреждение: что будет, если дать этой черте волю.
+                        <div style="background: rgba(56, 161, 105, 0.1); border-left: 4px solid #38A169; padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 15px; color: #2D3748;">
+                            <strong style="color: #38A169; display:block; margin-bottom:5px;">✅ УРОВЕНЬ ВЛИЯНИЯ: ПАССИВНЫЙ (${safeScore}/18)</strong>
+                            Твоя программа работает в пассивном режиме. Описание ниже — это "преувеличенная" версия. Читай это как предупреждение: что будет, если дать этой программе волю на 100%.
                         </div>
                     `;
                 }
