@@ -95,7 +95,30 @@
         .detail-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
         .detail-label { font-weight: 800; color: var(--accent-color); margin-bottom: 5px; display: block; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .long-text-toggle { text-align: center; margin: 20px 0; cursor: pointer; color: var(--accent-color); font-weight: 600; text-decoration: underline; }
+        /* Стиль для кнопки разворачивания описания (Второстепенная кнопка) */
+        .long-text-toggle {
+            text-align: center;
+            margin: 30px auto;        /* Отступы сверху/снизу и центровка */
+            cursor: pointer;
+            color: var(--accent-color);
+            font-weight: 700;         /* Жирный шрифт */
+            text-decoration: none;    /* Без подчеркивания */
+            
+            background-color: #EDF2F7; /* Светло-серый фон */
+            padding: 15px 30px;       /* Внутренние отступы */
+            border-radius: 12px;      /* Скругление */
+            display: block;           /* Блочный элемент */
+            width: fit-content;       /* Ширина по тексту */
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .long-text-toggle:hover {
+            background-color: #E2E8F0; /* Чуть темнее при наведении */
+            transform: translateY(-2px); /* Легкий подъем */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
         .long-text-content { display: none; background: white; padding: 30px; border-radius: var(--border-radius); margin-bottom: 30px; font-size: 16px; line-height: 1.6; color: var(--text-color); box-shadow: var(--shadow); }
         .long-text-content.visible { display: block; }
 
