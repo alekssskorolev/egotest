@@ -472,14 +472,24 @@
     }
 
     function renderQuestion() {
+        // Проверка безопасности: если вдруг индекс вышел за пределы (хотя не должен)
+        if (currentQuestionIndex >= currentQuestions.length) {
+            finishTest();
+            return;
+        }
+
         const q = currentQuestions[currentQuestionIndex];
         const counterEl = document.getElementById('question-counter');
         const textEl = document.getElementById('question-text');
         const fillEl = document.getElementById('progress-fill');
 
         textEl.innerText = q.text;
+        
+        // Обновляем счетчик цифрами (1 / 51)
         counterEl.innerText = `${currentQuestionIndex + 1} / ${currentQuestions.length}`;
-        const percent = ((currentQuestionIndex) / currentQuestions.length) * 100;
+        
+        // ИСПРАВЛЕНИЕ: Теперь полоска считает текущий вопрос как пройденный этап визуально
+        const percent = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
         fillEl.style.width = `${percent}%`;
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
