@@ -280,19 +280,26 @@
             <div id="winner-description" class="result-details"></div>
         </div>
 
-        <div class="long-text-toggle" onclick="toggleLongText()">
-    Развернуть полный психологический разбор
-</div>
+        <div class="long-text-toggle" onclick="toggleLongText()" style="position: relative; z-index: 10;">
+            Развернуть полный психологический разбор
+        </div>
 
-<div class="cta-section">
-            <div class="cta-text">
-                <span>Жми на кнопку ниже, чтобы узнать решение</span>
-                <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 16L6 10H18L12 16Z"/>
-                </svg>
+        <div id="long-text-block" class="long-text-content">
+            <div id="long-text-container">
+                <p style="text-align: center; color: #718096;">Загрузка описания...</p>
             </div>
+        </div>
+
+        <div class="cta-text">
+            <span>Жми на кнопку ниже, чтобы узнать решение</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16L6 10H18L12 16Z"/>
+            </svg>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 60px;">
             <a href="https://aleksskorolev.ru/master-class" class="btn-cta">ПОЛУЧИТЬ РЕШЕНИЕ</a>
-        </div> 
+        </div>
     </div> </div> <div id="warning-overlay">
     <div class="warning-text">ОТВЕЧАЙ ЧЕСТНО.<br>ЭТО РАДИ ТЕБЯ.<br>НИКТО НЕ УВИДИТ.</div>
 </div>
