@@ -95,29 +95,61 @@
         .detail-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
         .detail-label { font-weight: 800; color: var(--accent-color); margin-bottom: 5px; display: block; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Стиль для кнопки разворачивания описания (Второстепенная кнопка) */
-.long-text-toggle {
-    text-align: center;
-    margin: 30px auto;
-    cursor: pointer;
-    color: var(--accent-color);
-    font-weight: 700;
-    text-decoration: none;
-    background-color: #EDF2F7;
-    padding: 15px 30px;
-    border-radius: 12px;
-    display: block;
-    width: fit-content;
-    transition: all 0.2s ease;
-    /* Тот самый легкий черный бордер (полупрозрачный) */
-    border: 1px solid rgba(0, 0, 0, 0.15); 
-}
+        /* Кнопка с анимацией блика */
+        .long-text-toggle {
+            text-align: center;
+            margin: 30px auto;
+            cursor: pointer;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-decoration: none;
+            
+            background-color: #EDF2F7;
+            padding: 15px 30px;
+            border-radius: 12px;
+            display: block;
+            width: fit-content;
+            border: 1px solid rgba(0, 0, 0, 0.15); 
+            
+            /* ВАЖНО ДЛЯ АНИМАЦИИ: */
+            position: relative; 
+            overflow: hidden; /* Обрезает блик по краям кнопки */
+            transition: all 0.2s ease;
+        }
 
-.long-text-toggle:hover {
-    background-color: #E2E8F0;
-    border-color: rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
-}
+        .long-text-toggle:hover {
+            background-color: #E2E8F0;
+            border-color: rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Создаем сам "свет" (псевдоэлемент) */
+        .long-text-toggle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%; /* Начинаем слева за границей кнопки */
+            width: 80%;  /* Ширина световой полосы */
+            height: 100%;
+            
+            /* Градиент: Прозрачный -> Белый -> Прозрачный */
+            background: linear-gradient(
+                to right, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 0.8) 50%, 
+                rgba(255, 255, 255, 0) 100%
+            );
+            
+            transform: skewX(-25deg); /* Наклон полосы */
+            animation: shine 4s infinite; /* Запускаем анимацию */
+        }
+
+        /* Настройка движения */
+        @keyframes shine {
+            0% { left: -150%; }   /* Старт */
+            30% { left: 150%; }   /* Быстрый пролет вправо */
+            100% { left: 150%; }  /* Пауза (ничего не происходит до конца 4 секунд) */
+        }
         
         .long-text-content { display: none; background: white; padding: 30px; border-radius: var(--border-radius); margin-bottom: 30px; font-size: 17px; line-height: 1.6; color: var(--text-color); box-shadow: var(--shadow); }
         .long-text-content.visible { display: block; }
