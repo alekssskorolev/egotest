@@ -652,26 +652,25 @@
             `;
         });
         legendContainer.innerHTML = html;
-    }
-
-    // Toggle Long Text & Inject Content (ИСПРАВЛЕНО НАЗВАНИЕ)
+        
+    // 4. ЛОГИКА КНОПКИ (БЕРЕТ ДАННЫЕ ИЗ DATA.JS)
     function toggleLongText() {
         const block = document.getElementById('long-text-block');
         const container = document.getElementById('long-text-container');
+        const btn = document.getElementById('action-btn');
         
         if (!block.classList.contains('visible')) {
-            // Trying to open
             if (window.EGO_FULL_DESCRIPTIONS && window.EGO_FULL_DESCRIPTIONS[currentWinnerId]) {
                 container.innerHTML = window.EGO_FULL_DESCRIPTIONS[currentWinnerId];
             } else {
-                container.innerHTML = '<p style="text-align:center;">Описание не найдено. Пожалуйста, убедитесь, что блок с текстами (Блок 2, 3 или 4) корректно добавлен на страницу.</p>';
+                container.innerHTML = '<p style="text-align:center;">Загрузка описания...</p>';
             }
+            btn.innerText = "СВЕРНУТЬ";
+        } else {
+            btn.innerText = "УЗНАТЬ ПОДРОБНЕЕ";
         }
-        
         block.classList.toggle('visible');
     }
-
 </script>
-
 </body>
 </html>
