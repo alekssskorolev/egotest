@@ -32,6 +32,17 @@
 
         h1 { font-weight: 800; font-size: 28px; text-align: center; text-transform: uppercase; margin-bottom: 15px; line-height: 1.3; }
         .subtitle { text-align: center; font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        
+        /* Стили для эффекта маркера в подзаголовке */
+        .subtitle span {
+            background-color: #FFF4C3; /* Тот самый желтый цвет */
+            padding: 4px 8px;          /* Немного воздуха вокруг букв */
+            border-radius: 6px;        /* Скругленные углы фона */
+            box-decoration-break: clone; /* Важно: делает красивые края на каждой строке */
+            -webkit-box-decoration-break: clone; /* Для Safari/iPhone */
+            line-height: 1.8;          /* Чуть увеличим межстрочный, чтобы линии не слипались */
+        }
+        
         .description { text-align: center; font-size: 15px; color: var(--secondary-accent); margin-bottom: 40px; }
         
         /* Карточки */
@@ -220,7 +231,11 @@
     
     <div id="home-page">
         <h1>Какая программа управляет твоей жизнью?</h1>
-        <div class="subtitle">Тест на скрытую ЭГО-конструкцию. Узнай, что водит тебя по кругу, создает фоновую тревогу и забирает до 80% энергии на внутреннюю борьбу.</div>
+        
+        <div class="subtitle">
+    <span>Тест на скрытую ЭГО-конструкцию. Узнай, что водит тебя по кругу, создает фоновую тревогу и забирает до 80% энергии на внутреннюю борьбу.</span>
+</div>
+        
         <div class="description">Основано на нейрофизиологии и моделях поведения.</div>
 
         <h3 style="text-align:center; font-size: 14px; font-weight: 700; margin: 30px 0 20px; text-transform: uppercase;">Выбери глубину сканирования</h3>
