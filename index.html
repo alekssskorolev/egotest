@@ -224,8 +224,17 @@
             100% { left: 150%; }  /* Пауза (ничего не происходит до конца 4 секунд) */
         }
         
-        .long-text-content { display: none; background: white; padding: 30px; border-radius: var(--border-radius); margin-bottom: 30px; font-size: 17px; line-height: 1.6; color: var(--text-color); box-shadow: var(--shadow); }
-        .long-text-content.visible { display: block; }
+        .long-text-content { 
+    display: block; 
+    background: white; 
+    padding: 30px; 
+    border-radius: var(--border-radius); 
+    margin-bottom: 30px; 
+    font-size: 17px; 
+    line-height: 1.6; 
+    color: var(--text-color); 
+    box-shadow: var(--shadow); 
+}
 
         /* Контент длинного текста - форматирование */
         #long-text-container h3 { 
@@ -311,7 +320,7 @@
                 <span class="badge-info">~7 мин.</span>
             </div>
             <div class="card-text">
-                Глубокий анализ ЭГО-программ. Ты увидишь слепые зоны, которые блокируют твою энергию, радость и творчество.
+                Глубокий анализ ЭГО-программ. Ты увидишь слепые зоны, которые блокируют твою энергию, радость и творчество. Подробный отчет в конце — бесплатно.
             </div>
             <div class="card-footer">
                 <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Точность ~95%</span></span>
@@ -325,7 +334,7 @@
                 <span class="badge-info">~3 мин.</span>
             </div>
             <div class="card-text">
-                Быстрая диагностика текущего состояния. Узнай, какая программа активна прямо сейчас.
+                Быстрая диагностика текущего состояния. Узнай, какая программа активна прямо сейчас. Экспресс отчет в конце — бесплатно.
             </div>
             <div class="card-footer">
                 <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Точность ~60%</span></span>
@@ -376,9 +385,7 @@
             <div id="winner-description" class="result-details"></div>
         </div>
 
-        <div class="long-text-toggle" onclick="toggleLongText()" style="position: relative; z-index: 10;">
-            Читать подробное описание программы...
-        </div>
+        
 
         <div id="long-text-block" class="long-text-content">
             <div id="long-text-container">
@@ -387,15 +394,22 @@
         </div>
 
         <div class="cta-text">
-    Жми на кнопку ниже, чтобы узнать как отключить эту программу 👇
+    Читать продолжение в Телеграм боте 👇
 </div>
 
         <div style="text-align: center; margin-bottom: 60px;">
             <a href="https://t.me/aleksskorolev_bot?start=egotest" 
    class="btn-cta" 
    onclick="ym(108974548, 'reachGoal', 'final_button_click'); return true;">
-   ПОЛУЧИТЬ РЕШЕНИЕ
+   ЧИТАТЬ ПРОДОЛЖЕНИЕ
 </a>
+            <!-- Текст под кнопкой -->
+    <div style="font-size: 13px; color: #666; margin-top: 15px;">
+        если не работает Telegram, то 
+        <a href="https://egotest.ru/master-class" style="color: #666; text-decoration: underline;">переходи по этой ссылке</a>
+    </div>
+</div>
+        
         </div>
     </div> </div> <div id="warning-overlay">
     <div class="warning-text">ОТВЕЧАЙ ЧЕСТНО.<br>ЭТО РАДИ ТЕБЯ.<br>НИКТО НЕ УВИДИТ.</div>
@@ -427,7 +441,15 @@
         JUDGE: { id: 15, name: "Судья (Критик)", color: "#0066FF" },
         INVISIBLE: { id: 16, name: "Невидимка", color: "#0052CC" },
         CYNIC: { id: 17, name: "Циник", color: "#003D99" }
-    };
+        
+            };
+    
+    const BOT_KEYS = {
+    1: "perfectionist", 2: "workaholic", 3: "procrastinator", 4: "narcissist",
+    5: "victim", 6: "complicator", 7: "radicalist", 8: "good_boy",
+    9: "skeptic", 10: "artist", 11: "controller", 12: "rebel",
+    13: "rescuer", 14: "fly_away", 15: "judge", 16: "invisible", 17: "cynic"
+};
 
     const SHORT_DESCRIPTIONS = {
         1: `<div class="detail-block"><span class="detail-label">Суть:</span>Ты либо делаешь идеально, либо не делаешь никак. Любая ошибка для тебя — катастрофа. Ты годами шлифуешь детали, пока другие уже запускают проекты и зарабатывают. Твой внутренний критик никогда не затыкается.</div><div class="detail-block"><span class="detail-label">Травма:</span>Травма «Отвержения». Тебя стыдили за "четверки" и ошибки. Сравнивали с теми, кто учился лучше.</div><div class="detail-block"><span class="detail-label">Глубинное убеждение:</span>«Я ценен только когда делаю идеально».</div><div class="detail-block"><span class="detail-label">Любимые фразы:</span>«Это еще сыро», «Надо докрутить», «Либо хорошо, либо никак», «Я переделаю».</div><div class="detail-block"><span class="detail-label">Что бесит в других:</span>Халтура, небрежность, опечатки, «тяп-ляп и готово».</div><div class="detail-block"><span class="detail-label">Куда уходит энергия:</span>На бесконечное переделывание и страх начать.</div><div class="detail-block"><span class="detail-label">Последствия:</span>Выгорание, боли в спине и шее, синдром отложенной жизни, куча незавершенных проектов, паралич действий, низкая самооценка при высоких талантах, неврозы.</div>`,
@@ -659,9 +681,9 @@
     }
 
     function finishTest() {
-        document.getElementById('quiz-page').classList.add('hidden');
-        document.getElementById('results-page').classList.remove('hidden');
-        window.scrollTo(0,0);
+    document.getElementById('quiz-page').classList.add('hidden');
+    document.getElementById('results-page').classList.remove('hidden');
+    window.scrollTo(0,0);
 
         const resultsArray = Object.keys(scores).map(typeId => {
             const id = parseInt(typeId);
@@ -679,6 +701,13 @@
         currentWinnerId = winner.id;
         
         document.getElementById('winner-name').innerText = winner.name;
+
+        // Прошиваем кнопку Telegram актуальным параметром
+const startParam = BOT_KEYS[winner.id] || 'egotest';
+const ctaBtn = document.querySelector('.btn-cta');
+if (ctaBtn) {
+    ctaBtn.href = `https://t.me/aleksskorolev_bot?start=${startParam}`;
+}
         
         // Подгружаем краткое описание из локального объекта
         if(SHORT_DESCRIPTIONS[winner.id]) {
@@ -690,6 +719,7 @@
         const top3 = resultsArray.slice(0, 3);
         drawChart(top3);
         renderLegend(top3);
+        toggleLongText();
     }
 
     function drawChart(top3Data) {
@@ -803,6 +833,7 @@
         
         block.classList.toggle('visible');
     }
+
 
 </script>
 </body>
