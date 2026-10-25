@@ -1,0 +1,255 @@
+
+        /* --- НАСТРОЙКИ ДИЗАЙНА (CSS) --- */
+        :root {
+            --bg-color: #F5F7FA;        
+            --text-color: #1A202C;      
+            --accent-color: #0066FF;    
+            --orange-color: #FF8C00;    
+            --secondary-accent: #718096;
+            --white: #FFFFFF;           
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+            --border-radius: 20px;      
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+
+        h1 { font-weight: 800; font-size: 28px; text-align: center; text-transform: uppercase; margin-bottom: 15px; line-height: 1.3; }
+        .subtitle { text-align: center; font-size: 18px; font-weight: 500; margin-bottom: 10px; }
+        
+        /* Стили для эффекта маркера с правильным шрифтом */
+        .subtitle span {
+            background-color: #fbeeb8; /* Желтый фон как на скрине */
+            font-family: 'Montserrat', sans-serif; /* Установка нужного шрифта */
+            font-weight: 500;          /* Средняя жирность для читабельности */
+            padding: 4px 8px;          
+            border-radius: 4px;        
+            box-decoration-break: clone; 
+            -webkit-box-decoration-break: clone; 
+            line-height: 1.8;          
+            display: inline;           /* Важно для корректного переноса фона */
+            color: #000000;            /* Темный цвет текста для контраста */
+        }
+        
+        .description { text-align: center; font-size: 15px; color: var(--secondary-accent); margin-bottom: 40px; }
+        
+        /* Карточки */
+        .card { background: var(--white); border-radius: var(--border-radius); padding: 25px 30px; box-shadow: var(--shadow); margin-bottom: 25px; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; border: 2px solid transparent; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .card-full { border: 3px solid var(--accent-color); } 
+        .card-express .card-title { 
+            color: #4A5568; /* Темно-серый вместо оранжевого */
+        }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .card-title { font-size: 24px; font-weight: 800; color: var(--accent-color); line-height: 1.2; }
+        
+        .badge-info { font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 8px; background-color: #EDF2F7; color: var(--text-color); white-space: nowrap; margin-left: 10px; }
+        .card-full .badge-info { background-color: rgba(0, 102, 255, 0.1); color: var(--accent-color); }
+        .card-express .badge-info { 
+            background-color: #EDF2F7; /* Светло-серый фон */
+            color: #4A5568;            /* Темно-серый текст */
+        }
+        
+        .card-text { font-size: 16px; margin-bottom: 20px; color: #4A5568; line-height: 1.6; }
+        
+        .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; margin-top: auto; width: 100%; }
+        
+        .tag { background-color: var(--accent-color); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+        
+        .accuracy-badge { font-weight: 700; font-size: 14px; display: flex; align-items: center; }
+        .card-full .accuracy-badge { color: var(--accent-color); }
+        .card-express .accuracy-badge { 
+            color: #718096; /* Спокойный серый для процентов */
+        }
+
+        /* Подвал сайта */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 13px;
+            color: var(--secondary-accent);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            border-top: 1px solid #E2E8F0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        .disclaimer {
+            font-style: italic;
+            max-width: 600px;
+            margin: 10px auto 0;
+            opacity: 0.8;
+        }
+
+        /* Тест */
+        .quiz-wrapper { width: 100%; margin: 0 auto; }
+        .progress-container { margin-bottom: 30px; width: 100%; margin-left: auto; margin-right: auto; }
+        .progress-header { display: flex; justify-content: space-between; font-size: 12px; color: var(--secondary-accent); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
+        .progress-bar { width: 100%; height: 6px; background-color: #E2E8F0; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background-color: var(--accent-color); width: 0%; transition: width 0.3s ease; }
+        .question-card { background: var(--white); padding: 40px 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); text-align: center; margin-bottom: 20px; min-height: 200px; display: flex; align-items: center; justify-content: center; width: 100%; }
+        .question-text { font-size: 22px; font-weight: 700; color: var(--text-color); line-height: 1.4; }
+        
+        .answers-container { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+        .btn-answer { padding: 20px; border: none; border-radius: 15px; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none; width: 100%; }
+        
+        .btn-yes { background-color: var(--accent-color); color: white; box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3); }
+        .btn-yes:active { transform: scale(0.98); }
+        .btn-maybe { background-color: var(--white); color: var(--text-color); border: 2px solid #E2E8F0; }
+        .btn-maybe:active { background-color: #f7f9fc; }
+        .btn-no { background-color: var(--white); color: #A0AEC0; border: 1px solid transparent; }
+        .btn-no:active { color: var(--text-color); }
+
+        /* Результаты */
+        .chart-section { background: var(--white); border-radius: var(--border-radius); padding: 30px; box-shadow: var(--shadow); margin-bottom: 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
+        .chart-container { position: relative; width: 300px; height: 300px; }
+        .chart-legend { margin-left: 30px; flex: 1; min-width: 250px; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #EDF2F7; }
+        .legend-item:last-child { border-bottom: none; }
+        .legend-color { width: 12px; height: 12px; border-radius: 50%; margin-right: 15px; }
+        .legend-text { font-weight: 700; font-size: 16px; color: var(--text-color); display: flex; justify-content: space-between; width: 100%; }
+        .legend-score { color: var(--secondary-accent); font-weight: 500; background: #F7FAFC; padding: 2px 8px; border-radius: 8px; font-size: 14px; }
+        
+        .result-header-card { background: #1A202C; color: white; border-radius: var(--border-radius); padding: 40px 30px; margin-bottom: 20px; text-align: center; box-shadow: var(--shadow); }
+        .result-title-small { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.7; margin-bottom: 15px; font-weight: 600; }
+        .result-main-name { font-size: 32px; font-weight: 800; text-transform: uppercase; line-height: 1.2; }
+        
+        .result-body-card { background: var(--white); border-radius: var(--border-radius); padding: 30px; box-shadow: var(--shadow); margin-bottom: 30px; text-align: left; }
+        .result-details { font-size: 17px; color: var(--text-color); line-height: 1.6; }
+        .detail-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #EDF2F7; }
+        .detail-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .detail-label { font-weight: 800; color: var(--accent-color); margin-bottom: 5px; display: block; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Кнопка с анимацией блика */
+        .long-text-toggle {
+            text-align: center;
+            margin: 30px auto;
+            cursor: pointer;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-decoration: none;
+            
+            background-color: #EDF2F7;
+            padding: 15px 30px;
+            border-radius: 12px;
+            display: block;
+            width: fit-content;
+            border: 1px solid rgba(0, 0, 0, 0.15); 
+            
+            /* ВАЖНО ДЛЯ АНИМАЦИИ: */
+            position: relative; 
+            overflow: hidden; /* Обрезает блик по краям кнопки */
+            transition: all 0.2s ease;
+        }
+
+        .long-text-toggle:hover {
+            background-color: #E2E8F0;
+            border-color: rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Создаем сам "свет" (псевдоэлемент) - ЯРКАЯ ВЕРСИЯ */
+        .long-text-toggle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100px; /* Старт левее */
+            width: 50px;  /* Делаем луч узким (было 80%), чтобы он был четче */
+            height: 100%;
+            
+            /* Градиент: Резкий переход в чистый белый */
+            background: linear-gradient(
+                to right, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 1) 50%, /* Чистый белый, непрозрачный */
+                rgba(255, 255, 255, 0) 100%
+            );
+            
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
+        }
+
+        /* Настройка движения */
+        @keyframes shine {
+            0% { left: -150%; }   /* Старт */
+            30% { left: 150%; }   /* Быстрый пролет вправо */
+            100% { left: 150%; }  /* Пауза (ничего не происходит до конца 4 секунд) */
+        }
+        
+        .long-text-content { 
+    display: block; 
+    background: white; 
+    padding: 30px; 
+    border-radius: var(--border-radius); 
+    margin-bottom: 30px; 
+    font-size: 17px; 
+    line-height: 1.6; 
+    color: var(--text-color); 
+    box-shadow: var(--shadow); 
+}
+
+        /* Контент длинного текста - форматирование */
+        #long-text-container h3 { 
+            text-align: center; 
+            color: var(--accent-color); 
+            margin-bottom: 20px; 
+        }
+
+        #long-text-container p { 
+            margin-bottom: 0; 
+            margin-top: 0;    
+            line-height: 1.6; 
+        }
+
+        #long-text-container ul { 
+            margin-bottom: 15px; 
+            padding-left: 20px; 
+        }
+
+        #long-text-container li { 
+            margin-bottom: 5px; 
+        }
+
+        .cta-section { text-align: center; margin-top: 40px; margin-bottom: 60px; }
+        
+        /* Кнопка: "получить решение" */
+.cta-text { 
+    font-size: 18px; 
+    font-weight: 700; 
+    margin: 40px auto 20px;
+    text-align: center;
+    width: 100%;
+}
+        
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
+        .btn-cta { background-color: var(--accent-color); color: #FFFFFF !important; padding: 22px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; display: inline-block; box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4); transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; letter-spacing: 0.5px; text-transform: uppercase; }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0, 102, 255, 0.5); }
+        
+        .hidden { display: none !important; }
+        #warning-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(26, 32, 44, 0.95); z-index: 1000; display: flex; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; opacity: 0; visibility: hidden; transition: opacity 0.5s ease; }
+        #warning-overlay.active { opacity: 1; visibility: visible; }
+        .warning-text { font-size: 24px; font-weight: 600; text-transform: uppercase; line-height: 1.5; max-width: 600px; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 24px; }
+            .question-text { font-size: 18px; }
+            .chart-section { flex-direction: column; padding: 20px; }
+            .chart-legend { margin-left: 0; margin-top: 30px; width: 100%; }
+            .chart-container { width: 250px; height: 250px; }
+            .result-main-name { font-size: 24px; }
+            .cta-text { font-size: 16px; flex-direction: row; flex-wrap: nowrap; }
+            .result-header-card { padding: 30px 20px; }
+            .result-body-card { padding: 25px 20px; }
+            .card-title { font-size: 20px; }
+            .card-footer { justify-content: space-between; flex-wrap: nowrap; align-items: center; }
+            .accuracy-badge .badge-info, .tag { font-size: 11px; padding: 6px 10px; white-space: nowrap; }
+            .accuracy-badge { width: auto; margin-bottom: 0; justify-content: flex-start; }
+            .tag { margin-left: 0; }
+        }
+    
