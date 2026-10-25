@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЭГО-ТЕСТ: какие привычные реакции тебе знакомы?</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Бесплатный авторский тест для самонаблюдения. Заметь знакомые модели поведения без диагнозов и обещаний точности.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="assets/chart-4.4.8.js" defer></script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+
+
+    <link rel="stylesheet" href="assets/original.css">
+<link rel="stylesheet" href="assets/review.css">
+</head>
+<body>
+<div class="review-banner">Версия для согласования. Рабочий тест не заменён. <a href="master-class/">Посмотреть продажник мастер-класса →</a></div>
+
+<div id="app" class="container">
+    
+    <div id="home-page">
+        <h1>Какая привычная реакция возвращает тебя в тупик?</h1>
+        
+        <div class="subtitle">
+    <span>Пройди бесплатный тест и заметь знакомые модели: откладывание, контроль, стремление угодить или доказать свою правоту.</span>
+</div>
+        
+        <div class="description">Авторский опросник для самонаблюдения. Не диагностика и не оценка личности.</div>
+        
+    
+        
+
+        <h3 style="text-align:center; font-size: 14px; font-weight: 700; margin: 30px 0 20px; text-transform: uppercase;">Выбери вариант теста</h3>
+
+        <div class="card card-full" role="button" tabindex="0" onclick="startTest('full')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();startTest('full');}">
+            <div class="card-header">
+                <span class="card-title">Полный тест</span>
+                <span class="badge-info">102 утверждения</span>
+            </div>
+            <div class="card-text">
+                По шесть утверждений на каждую из 17 моделей поведения. В конце — краткий результат и переход к продолжению в Telegram. Бесплатно.
+            </div>
+            <div class="card-footer">
+                <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Больше примеров</span></span>
+                <span class="tag">Полный вариант</span>
+            </div>
+        </div>
+
+        <div class="card card-express" role="button" tabindex="0" onclick="startTest('express')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();startTest('express');}">
+            <div class="card-header">
+                <span class="card-title">Экспресс-тест</span>
+                <span class="badge-info">51 утверждение</span>
+            </div>
+            <div class="card-text">
+                По три утверждения на каждую модель. Вопросов меньше; это краткое знакомство, а не более быстрая диагностика. Результат — бесплатно.
+            </div>
+            <div class="card-footer">
+                <span class="accuracy-badge"><span class="badge-info" style="margin-left:0; font-weight:700;">Меньше вопросов</span></span>
+            </div>
+        </div>
+    </div>
+
+    <p id="test-privacy" class="copy-note">Отвечай по своему недавнему опыту. Ответы считаются в браузере и не отправляются на сервер. Система баллов авторская, психометрическая точность не установлена.</p>
+    <div id="quiz-page" class="hidden">
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>Прогресс</span>
+                <span id="question-counter">1 / 102</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="quiz-wrapper">
+            <div class="question-card">
+                <div id="question-text" class="question-text">Загрузка вопроса...</div>
+            </div>
+
+            <div class="answers-container">
+                <button class="btn-answer btn-yes" onclick="handleAnswer(3)">Да, это про меня</button>
+                <button class="btn-answer btn-maybe" onclick="handleAnswer(1)">Возможно, иногда</button>
+                <button class="btn-answer btn-no" onclick="handleAnswer(0)">Нет, не похоже</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-navigation" class="questions-nav hidden"><button id="previous-question" onclick="previousQuestion()">← Предыдущий вопрос</button><button onclick="exitTest()">Выйти из теста</button></div>
+    <div id="results-page" class="hidden">
+        <h1>Результаты тестирования</h1>
+        
+        <div class="chart-section">
+            <div class="chart-container">
+                <canvas id="resultsChart" role="img" aria-label="Баллы трёх моделей, не доли личности"></canvas>
+            </div>
+            <div class="chart-legend" id="chart-legend"></div>
+        </div>
+
+        <div class="result-header-card">
+            <div class="result-title-small">С каким описанием чаще совпали ответы</div>
+            <div id="winner-name" class="result-main-name">НАЗВАНИЕ</div>
+        </div>
+
+        <div class="result-body-card">
+            <div id="winner-description" class="result-details"></div>
+            <p class="copy-note">Названия моделей условные. Результат не является диагнозом, объяснением твоего детства или оценкой всей личности. Оставь только то, что подходит к твоему опыту.</p>
+        </div>
+
+        
+
+        <div id="long-text-block" class="long-text-content">
+            <div id="long-text-container">
+                <p style="text-align: center; color: #718096;">Загрузка описания...</p>
+            </div>
+        </div>
+
+        <div class="cta-text">
+    Хочешь подробнее разобраться в знакомой реакции?<br>Продолжение — в Telegram-боте 👇
+</div>
+
+        <div style="text-align: center; margin-bottom: 60px;">
+            <a href="https://t.me/aleksskorolev_bot?start=egotest" 
+   class="btn-cta" 
+   onclick="trackReview('telegram_click'); return true;" rel="noopener noreferrer">
+   ЧИТАТЬ ПРОДОЛЖЕНИЕ
+</a>
+<p class="copy-note">В предпросмотре ссылка ведёт в действующий бот. Его сообщения и старые PDF ещё не обновлены; не используем эту версию для привлечения покупателей до проверки всего маршрута.</p>
+            <!-- Текст под кнопкой -->
+    <div style="font-size: 13px; color: #666; margin-top: 15px;">
+        если не работает Telegram, то 
+        <a id="fallback-link" href="result.html" style="color: #666; text-decoration: underline;">прочитай описание на сайте</a>
+    </div>
+</div>
+        
+        </div>
+    </div> </div> <div id="warning-overlay">
+    <div class="warning-text">ОТВЕЧАЙ ПО СВОЕМУ ОПЫТУ.<br>ЗДЕСЬ НЕТ ПРАВИЛЬНЫХ ОТВЕТОВ.</div>
+</div>
+
+    <footer class="footer">
+        <p>©2026, ИП Королев А.С. ИНН 781699104994</p>
+        <p class="disclaimer">Результат — повод для самонаблюдения, не медицинский диагноз. При выраженных трудностях обратись к специалисту. Во время согласования внешняя аналитика отключена.</p>
+    </footer>
+
+<script src="assets/review.js" defer></script>
+<script src="assets/constants.js" defer></script>
+<script src="descriptions.js" defer></script>
+
+<script src="assets/quiz.js" defer></script>
+</body>
+</html>
